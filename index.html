@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robin Francis - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <header>
         <nav>
             <div class="logo">RF</div>
@@ -29,6 +34,7 @@
 
     <main>
         <section id="home" class="hero-section">
+            <div class="hero-background"></div>
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Robin Francis</h1>
@@ -39,10 +45,18 @@
                     </div>
                     <p class="hero-description">Passionate about creating innovative solutions and learning new technologies.</p>
                     <div class="social-links">
-                        <a href="mailto:robinfrancis186@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="tel:+918078256598" title="Phone"><i class="fas fa-phone"></i></a>
-                        <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:robinfrancis186@gmail.com" title="Email" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="tel:+918078256598" title="Phone" class="social-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" title="GitHub" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="scroll-indicator">
@@ -86,48 +100,111 @@
             <div class="skills-container">
                 <div class="skills-group">
                     <h3>Programming Languages</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>HTML</li>
-                    </ul>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="85%"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="skills-group">
                     <h3>Developer Tools</h3>
-                    <ul>
-                        <li>Visual Studio Code</li>
-                        <li>Figma</li>
-                    </ul>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>VS Code</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Figma</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="80%"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="skills-group">
                     <h3>Editing</h3>
-                    <ul>
-                        <li>Adobe Photoshop</li>
-                    </ul>
-                </div>
-                <div class="skills-group">
-                    <h3>Volunteering</h3>
-                    <ul>
-                        <li>NCC</li>
-                        <li>NSS</li>
-                        <li>IEEE</li>
-                    </ul>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Photoshop</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="85%"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="skills-group">
                     <h3>Languages</h3>
-                    <ul>
-                        <li>English</li>
-                        <li>Hindi</li>
-                        <li>Malayalam</li>
-                    </ul>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>English</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Hindi</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Malayalam</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-percentage="100%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="certifications">
+                <div class="certifications glass-card">
                     <h3>Certifications</h3>
                     <ul>
-                        <li>Graphic Designing</li>
-                        <li>TCS ION Career Edge - Young Professional</li>
-                        <li>Data Analytics using Excel</li>
-                        <li>Career Essentials in Generative AI by Microsoft</li>
-                        <li>Career Essentials in Business Analysis</li>
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <span>Graphic Designing</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <span>TCS ION Career Edge - Young Professional</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <span>Data Analytics using Excel</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <span>Career Essentials in Generative AI by Microsoft</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <span>Career Essentials in Business Analysis</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -210,7 +287,20 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Robin Francis. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Robin Francis. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="mailto:robinfrancis186@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
