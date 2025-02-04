@@ -6,39 +6,193 @@
     <title>Robin Francis - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Robin Francis</h1>
-            <ul>
+            <div class="logo">RF</div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home">
-            <div class="hero">
-                <h2>Welcome to My Portfolio</h2>
-                <p>Full Stack Developer | Creative Problem Solver</p>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Robin Francis</h1>
+                    <div class="hero-subtitle">
+                        <span class="designer">Computer Science Student</span>
+                        <span class="separator">&lt;/&gt;</span>
+                        <span class="coder">Full Stack Developer</span>
+                    </div>
+                    <p class="hero-description">Passionate about creating innovative solutions and learning new technologies.</p>
+                    <div class="social-links">
+                        <a href="mailto:robinfrancis186@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="tel:+918078256598" title="Phone"><i class="fas fa-phone"></i></a>
+                        <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </section>
 
         <section id="about">
-            <h2>About Me</h2>
+            <h2>Career Objective</h2>
             <div class="about-content">
-                <p>I am a passionate developer with expertise in creating modern web applications.</p>
+                <p>To leverage my strong academic foundation in Computer Science Engineering to secure a position where I can contribute to innovative development. I aim to apply my skills in programming, algorithms, and problem-solving to solve real-world challenges, while continuously learning and growing in a dynamic technological environment.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Sahrdaya College of Engineering & Technology (SCET)</h3>
+                    <p class="year">2021 - 2025 | present</p>
+                    <p>Bachelor of Technology - BTech, Computer Science & Engineering</p>
+                </div>
+                <div class="education-card">
+                    <h3>National Higher Secondary School</h3>
+                    <p class="year">2019 - 2021</p>
+                    <p>Plus two, Computer Science</p>
+                    <p class="percentage">Percentage: 96%</p>
+                </div>
+                <div class="education-card">
+                    <h3>Don Bosco High School, Irinjalakuda</h3>
+                    <p>Science</p>
+                    <p class="percentage">Percentage: 100%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-container">
+                <div class="skills-group">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>HTML</li>
+                    </ul>
+                </div>
+                <div class="skills-group">
+                    <h3>Developer Tools</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+                <div class="skills-group">
+                    <h3>Editing</h3>
+                    <ul>
+                        <li>Adobe Photoshop</li>
+                    </ul>
+                </div>
+                <div class="skills-group">
+                    <h3>Volunteering</h3>
+                    <ul>
+                        <li>NCC</li>
+                        <li>NSS</li>
+                        <li>IEEE</li>
+                    </ul>
+                </div>
+                <div class="skills-group">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English</li>
+                        <li>Hindi</li>
+                        <li>Malayalam</li>
+                    </ul>
+                </div>
+                <div class="certifications">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>Graphic Designing</li>
+                        <li>TCS ION Career Edge - Young Professional</li>
+                        <li>Data Analytics using Excel</li>
+                        <li>Career Essentials in Generative AI by Microsoft</li>
+                        <li>Career Essentials in Business Analysis</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
+            <h2>Projects</h2>
             <div class="projects-grid">
-                <!-- Project cards will be added here -->
+                <div class="project-card">
+                    <h3>Virtual Mouse Using Hand Gesture</h3>
+                    <ul>
+                        <li>Developed an innovative virtual mouse application combining hand gesture recognition and voice control.</li>
+                        <li>Leveraged computer vision with OpenCV for real-time hand gesture detection and Python for voice command integration.</li>
+                        <li>Enabled users to initiate the virtual mouse through voice commands and control cursor movements and clicks with hand gestures.</li>
+                        <li>Improved accessibility and user experience by providing a hands-free interface.</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>QUESTIONPRO</h3>
+                    <ul>
+                        <li>This project aims to simplify online survey creation and analysis.</li>
+                        <li>The platform offers 250+ templates for various needs, real-time analytics, and multi-channel distribution while ensuring privacy and security.</li>
+                        <li>The project emphasizes user-friendly customization, educational support, and continuous improvement.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2>Leadership & Achievements</h2>
+            <div class="achievements-container">
+                <div class="leadership">
+                    <h3>Leadership Roles</h3>
+                    <div class="leadership-item">
+                        <h4>IEEE:</h4>
+                        <ul>
+                            <li>IEEE India Council (INDUSTRY & EXTERNAL RELATIONS)</li>
+                            <li>IEEE CS Kerala Chapter (Kochi Hub Student Representative)</li>
+                            <li>IEEE Sahrdaya SB (Chairperson)</li>
+                            <li>IEEEXtreme Ambassador (2024)</li>
+                        </ul>
+                    </div>
+                    <div class="leadership-item">
+                        <h4>PLACEMENT CELL:</h4>
+                        <ul>
+                            <li>Placement Coordinator (2021 - 2025)</li>
+                        </ul>
+                    </div>
+                    <div class="leadership-item">
+                        <h4>IEDC:</h4>
+                        <ul>
+                            <li>Vice President (2023-2024)</li>
+                            <li>Media Specialist (2022-2023)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="achievements-list">
+                    <h3>Notable Achievements</h3>
+                    <ul>
+                        <li>R10 Outstanding Volunteer Award 2024 (First student from the Asia-Pacific Region to receive this prestigious award.)</li>
+                        <li>1st Runner-Up in IBM International Gen AI Conclave 2024.</li>
+                        <li>Awarded the IEEE Outstanding Student Volunteer Award 2023 by the Computer Society Kerala chapter.</li>
+                        <li>Achieved the bronze medal in national-level firing competition held in Delhi.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
