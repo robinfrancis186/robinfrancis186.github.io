@@ -129,7 +129,7 @@ nav {
     width: 100%;
 }
 
-/* Hero Section */
+/* Hero Section Optimization */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -139,8 +139,35 @@ nav {
     position: relative;
     background: var(--bg-primary);
     overflow: hidden;
+    isolation: isolate; /* Creates stacking context for better performance */
 }
 
+.hero-background {
+    position: absolute;
+    inset: -50%; /* Expanded size for scaling animation */
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 20%, var(--gradient-start) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, var(--gradient-end) 0%, transparent 30%);
+    opacity: 0.1;
+    will-change: transform;
+    transform-origin: center;
+    animation: pulseOptimized 8s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none; /* Prevents unnecessary event handling */
+}
+
+@keyframes pulseOptimized {
+    0% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Hero Content Optimization */
 .hero-content {
     max-width: 1400px;
     width: 100%;
@@ -148,32 +175,53 @@ nav {
     padding: 2rem;
     position: relative;
     z-index: 1;
-}
-
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 20%, var(--gradient-start) 0%, transparent 30%),
-        radial-gradient(circle at 80% 80%, var(--gradient-end) 0%, transparent 30%);
-    opacity: 0.1;
-    animation: pulse 8s ease-in-out infinite alternate;
-    z-index: 0;
+    will-change: transform, opacity;
 }
 
 .hero-title {
-    font-size: 5rem;
+    font-size: clamp(3rem, 8vw, 5rem); /* Responsive font size */
     font-weight: 800;
     letter-spacing: -2px;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
+    will-change: background-position;
     animation: gradientFlow 8s ease infinite;
+    transform: translateZ(0); /* Force GPU acceleration */
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Optimize gradient animations */
+@property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* Preload optimization */
+@media (prefers-reduced-motion: reduce) {
+    .hero-background {
+        animation: none;
+    }
+    
+    .hero-title {
+        animation: none;
+        background-position: 0% 50%;
+    }
 }
 
 .hero-subtitle {
@@ -399,18 +447,6 @@ button:hover {
     100% {
         transform: scale(1);
         opacity: 0.1;
-    }
-}
-
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
     }
 }
 
