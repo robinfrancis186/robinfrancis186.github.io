@@ -277,4 +277,99 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     }
+});
+
+// Progressive Image Loading
+function loadImage(img) {
+    const fullSrc = img.dataset.src;
+    if (!fullSrc) return;
+
+    const fullImg = new Image();
+    fullImg.src = fullSrc;
+    fullImg.className = 'full';
+    
+    fullImg.onload = function() {
+        img.parentNode.appendChild(fullImg);
+        setTimeout(() => {
+            fullImg.classList.add('loaded');
+        }, 100);
+    };
+}
+
+// Initialize progressive images
+document.querySelectorAll('.progressive-image img.thumb').forEach(loadImage);
+
+// Project Card Parallax Effect
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        card.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateZ(10px)
+        `;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+});
+
+// Glass Card 3D Effect
+document.querySelectorAll('.glass-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 30;
+        const rotateY = (centerX - x) / 30;
+        
+        card.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateZ(5px)
+        `;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+});
+
+// Timeline Animation Enhancement
+const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            
+            // Animate the connector line
+            const connector = entry.target.querySelector('.timeline-connector');
+            if (connector) {
+                connector.style.height = '100%';
+            }
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '-50px'
+});
+
+timelineItems.forEach(item => {
+    timelineObserver.observe(item);
 }); 
