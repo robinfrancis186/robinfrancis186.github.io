@@ -26,13 +26,21 @@
     <link rel="preload" href="css/style.css" as="style">
     
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="js/script.js" defer></script>
+    <script src="js/animations.js" defer></script>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader"></div>
-        <p>Loading amazing content...</p>
+        <div class="name-animation">
+            <span class="name-text"></span>
+        </div>
+        <div class="loading-progress">
+            <div class="progress-bar"></div>
+            <span class="progress-text">0%</span>
+        </div>
     </div>
 
     <!-- Theme Toggle -->
