@@ -139,47 +139,116 @@ document.querySelectorAll('section, .card').forEach((element) => {
     observer.observe(element);
 });
 
-// Form handling with validation
+// Form handling with enhanced validation
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Basic form validation
+        // Remove any existing messages
+        clearFormMessages();
+        
+        // Get form data
         const formData = new FormData(this);
         const formObject = Object.fromEntries(formData);
         
-        // Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formObject.email)) {
-            showFormMessage('Please enter a valid email address', 'error');
+        // Validate all fields
+        const validationErrors = validateForm(formObject);
+        
+        if (validationErrors.length > 0) {
+            validationErrors.forEach(error => {
+                showFormMessage(error, 'error');
+            });
             return;
         }
         
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        
         try {
-            // Here you would typically send the data to a server
-            console.log('Form submitted:', formObject);
+            // Simulate server request (replace with actual API call)
+            await new Promise(resolve => setTimeout(resolve, 1500));
             
+            // Success
             showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
             this.reset();
+            
+            // Reset button after success
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Sent!';
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }, 2000);
+            
         } catch (error) {
+            console.error('Form submission error:', error);
             showFormMessage('There was an error sending your message. Please try again.', 'error');
+            
+            // Reset button after error
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
         }
     });
 }
 
+// Form validation
+function validateForm(formData) {
+    const errors = [];
+    
+    // Name validation
+    if (!formData.name || formData.name.trim().length < 2) {
+        errors.push('Please enter a valid name (minimum 2 characters)');
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email || !emailRegex.test(formData.email)) {
+        errors.push('Please enter a valid email address');
+    }
+    
+    // Message validation
+    if (!formData.message || formData.message.trim().length < 10) {
+        errors.push('Please enter a message (minimum 10 characters)');
+    }
+    
+    return errors;
+}
+
 // Form message handling
 function showFormMessage(message, type) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message ${type}`;
-    messageDiv.textContent = message;
+    const messageContainer = document.createElement('div');
+    messageContainer.className = `form-message ${type}`;
+    
+    const icon = document.createElement('i');
+    icon.className = type === 'success' 
+        ? 'fas fa-check-circle'
+        : 'fas fa-exclamation-circle';
+    
+    const textSpan = document.createElement('span');
+    textSpan.textContent = message;
+    
+    messageContainer.appendChild(icon);
+    messageContainer.appendChild(textSpan);
     
     const form = document.getElementById('contact-form');
-    form.appendChild(messageDiv);
+    form.insertBefore(messageContainer, form.firstChild);
     
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 5000);
+    // Auto-remove success messages after 5 seconds
+    if (type === 'success') {
+        setTimeout(() => {
+            messageContainer.remove();
+        }, 5000);
+    }
+}
+
+// Clear all form messages
+function clearFormMessages() {
+    const form = document.getElementById('contact-form');
+    const messages = form.querySelectorAll('.form-message');
+    messages.forEach(message => message.remove());
 }
 
 // Skill bars animation
