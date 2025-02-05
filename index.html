@@ -3,36 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robin Francis - Portfolio</title>
+    <meta name="description" content="Robin Francis - Computer Science Student and Full Stack Developer. Portfolio showcasing projects, skills, and achievements in software development and technology.">
+    <meta name="keywords" content="Robin Francis, Portfolio, Full Stack Developer, Computer Science, Web Development, Python, IEEE">
+    <meta name="author" content="Robin Francis">
+    <meta property="og:title" content="Robin Francis - Portfolio">
+    <meta property="og:description" content="Computer Science Student and Full Stack Developer showcasing innovative projects and technical skills">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta property="og:url" content="https://robinfrancis186.github.io">
+    
+    <title>Robin Francis - Portfolio | Full Stack Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="js/script.js" as="script">
+    <link rel="preload" href="css/style.css" as="style">
+    
+    <!-- Scripts -->
     <script src="js/script.js" defer></script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+        <p>Loading amazing content...</p>
+    </div>
+
+    <!-- Theme Toggle -->
     <button class="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
 
+    <!-- Header -->
     <header>
         <nav>
             <div class="logo">RF</div>
-            <div class="mobile-menu">
+            <div class="mobile-menu" aria-label="Menu toggle">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#mission">Mission</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-background"></div>
             <div class="hero-content">
@@ -43,264 +70,293 @@
                         <span class="separator">&lt;/&gt;</span>
                         <span class="coder">Full Stack Developer</span>
                     </div>
-                    <p class="hero-description">Passionate about creating innovative solutions and learning new technologies.</p>
+                    <p class="hero-description">Building innovative solutions that make a difference</p>
                     <div class="social-links">
                         <a href="mailto:robinfrancis186@gmail.com" title="Email" class="social-link">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn" class="social-link">
+                        <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-link">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="tel:+918078256598" title="Phone" class="social-link">
                             <i class="fas fa-phone"></i>
                         </a>
-                        <a href="https://github.com/yourusername" target="_blank" title="GitHub" class="social-link">
+                        <a href="https://github.com/robinfrancis186" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-link">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
-                <div class="scroll-indicator">
-                    <span>Scroll to explore</span>
-                    <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <h2>Mission Statement</h2>
+                <div class="mission-content glass-card">
+                    <p class="mission-text">
+                        "Dedicated to leveraging technology to create innovative solutions that enhance people's lives. 
+                        My mission is to combine technical expertise with creative problem-solving to develop 
+                        applications that are not just functional, but also accessible and user-friendly."
+                    </p>
                 </div>
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about">
-            <h2>Career Objective</h2>
-            <div class="about-content">
-                <p>To leverage my strong academic foundation in Computer Science Engineering to secure a position where I can contribute to innovative development. I aim to apply my skills in programming, algorithms, and problem-solving to solve real-world challenges, while continuously learning and growing in a dynamic technological environment.</p>
-            </div>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h3>Sahrdaya College of Engineering & Technology (SCET)</h3>
-                    <p class="year">2021 - 2025 | present</p>
-                    <p>Bachelor of Technology - BTech, Computer Science & Engineering</p>
-                </div>
-                <div class="education-card">
-                    <h3>National Higher Secondary School</h3>
-                    <p class="year">2019 - 2021</p>
-                    <p>Plus two, Computer Science</p>
-                    <p class="percentage">Percentage: 96%</p>
-                </div>
-                <div class="education-card">
-                    <h3>Don Bosco High School, Irinjalakuda</h3>
-                    <p>Science</p>
-                    <p class="percentage">Percentage: 100%</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills & Certifications</h2>
-            <div class="skills-container">
-                <div class="skills-group">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Python</span>
-                            <span>90%</span>
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content glass-card">
+                    <div class="about-text">
+                        <p>I am a passionate Computer Science student at Sahrdaya College of Engineering & Technology, 
+                        with a strong foundation in full-stack development and a keen interest in emerging technologies. 
+                        My journey in technology is driven by a desire to create meaningful solutions that address real-world challenges.</p>
+                        
+                        <p>As an active member of IEEE and various technical communities, I constantly seek opportunities 
+                        to learn and contribute to the tech ecosystem. My experience spans from developing innovative 
+                        applications to leading technical teams and organizing community events.</p>
+                    </div>
+                    <div class="key-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <h3>Developer</h3>
+                            <p>Full-stack development with focus on user experience</p>
                         </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="90%"></div>
+                        <div class="highlight-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Leader</h3>
+                            <p>IEEE Sahrdaya SB Chairperson & Community Builder</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Innovator</h3>
+                            <p>Creating solutions that matter</p>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>HTML/CSS</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="85%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-group">
-                    <h3>Developer Tools</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>VS Code</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Figma</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="80%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-group">
-                    <h3>Editing</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Adobe Photoshop</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="85%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-group">
-                    <h3>Languages</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>English</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Hindi</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Malayalam</span>
-                            <span>100%</span>
-                        </div>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar" data-percentage="100%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="certifications glass-card">
-                    <h3>Certifications</h3>
-                    <ul>
-                        <li>
-                            <i class="fas fa-certificate"></i>
-                            <span>Graphic Designing</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-certificate"></i>
-                            <span>TCS ION Career Edge - Young Professional</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-certificate"></i>
-                            <span>Data Analytics using Excel</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-certificate"></i>
-                            <span>Career Essentials in Generative AI by Microsoft</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-certificate"></i>
-                            <span>Career Essentials in Business Analysis</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
 
+        <!-- Resume Section -->
+        <section id="resume">
+            <div class="container">
+                <h2>Resume</h2>
+                <div class="resume-content">
+                    <!-- Education -->
+                    <div class="resume-section education-section">
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item glass-card">
+                                <div class="timeline-content">
+                                    <h4>Sahrdaya College of Engineering & Technology (SCET)</h4>
+                                    <p class="timeline-period">2021 - 2025 | present</p>
+                                    <p>Bachelor of Technology - BTech, Computer Science & Engineering</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item glass-card">
+                                <div class="timeline-content">
+                                    <h4>National Higher Secondary School</h4>
+                                    <p class="timeline-period">2019 - 2021</p>
+                                    <p>Plus two, Computer Science</p>
+                                    <p class="achievement">Percentage: 96%</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item glass-card">
+                                <div class="timeline-content">
+                                    <h4>Don Bosco High School, Irinjalakuda</h4>
+                                    <p>Science</p>
+                                    <p class="achievement">Percentage: 100%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership & Achievements -->
+                    <div class="resume-section achievements-section">
+                        <h3>Leadership & Achievements</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card glass-card">
+                                <h4>IEEE Leadership</h4>
+                                <ul>
+                                    <li>IEEE India Council (INDUSTRY & EXTERNAL RELATIONS)</li>
+                                    <li>IEEE CS Kerala Chapter (Kochi Hub Student Representative)</li>
+                                    <li>IEEE Sahrdaya SB (Chairperson)</li>
+                                    <li>IEEEXtreme Ambassador (2024)</li>
+                                </ul>
+                            </div>
+                            <div class="achievement-card glass-card">
+                                <h4>Notable Awards</h4>
+                                <ul>
+                                    <li>R10 Outstanding Volunteer Award 2024</li>
+                                    <li>1st Runner-Up in IBM International Gen AI Conclave 2024</li>
+                                    <li>IEEE Outstanding Student Volunteer Award 2023</li>
+                                    <li>Bronze medal in national-level firing competition</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resume-download">
+                    <a href="resume.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Full Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
         <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Virtual Mouse Using Hand Gesture</h3>
-                    <ul>
-                        <li>Developed an innovative virtual mouse application combining hand gesture recognition and voice control.</li>
-                        <li>Leveraged computer vision with OpenCV for real-time hand gesture detection and Python for voice command integration.</li>
-                        <li>Enabled users to initiate the virtual mouse through voice commands and control cursor movements and clicks with hand gestures.</li>
-                        <li>Improved accessibility and user experience by providing a hands-free interface.</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <h3>QUESTIONPRO</h3>
-                    <ul>
-                        <li>This project aims to simplify online survey creation and analysis.</li>
-                        <li>The platform offers 250+ templates for various needs, real-time analytics, and multi-channel distribution while ensuring privacy and security.</li>
-                        <li>The project emphasizes user-friendly customization, educational support, and continuous improvement.</li>
-                    </ul>
+            <div class="container">
+                <h2>Case Studies & Projects</h2>
+                <div class="projects-grid">
+                    <!-- Virtual Mouse Project -->
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <h3>Virtual Mouse Using Hand Gesture</h3>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>OpenCV</span>
+                                <span>Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-image">
+                                <img src="images/virtual-mouse.jpg" alt="Virtual Mouse Project" loading="lazy">
+                            </div>
+                            <div class="project-details">
+                                <h4>Overview</h4>
+                                <p>An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.</p>
+                                
+                                <h4>Development Process</h4>
+                                <ul>
+                                    <li>Implemented real-time hand gesture detection using OpenCV</li>
+                                    <li>Integrated voice command functionality for enhanced control</li>
+                                    <li>Developed intuitive gesture mappings for mouse actions</li>
+                                    <li>Optimized performance for real-time responsiveness</li>
+                                </ul>
+                                
+                                <div class="project-links">
+                                    <a href="https://github.com/yourusername/virtual-mouse" target="_blank" rel="noopener noreferrer" class="btn">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                    <a href="#" class="btn">
+                                        <i class="fas fa-play"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QuestionPro Project -->
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <h3>QUESTIONPRO</h3>
+                            <div class="project-tags">
+                                <span>Survey Platform</span>
+                                <span>Analytics</span>
+                                <span>UX Design</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-image">
+                                <img src="images/questionpro.jpg" alt="QuestionPro Project" loading="lazy">
+                            </div>
+                            <div class="project-details">
+                                <h4>Overview</h4>
+                                <p>A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.</p>
+                                
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li>250+ customizable survey templates</li>
+                                    <li>Real-time analytics and reporting</li>
+                                    <li>Multi-channel distribution system</li>
+                                    <li>Enhanced privacy and security measures</li>
+                                </ul>
+                                
+                                <div class="project-links">
+                                    <a href="https://github.com/yourusername/questionpro" target="_blank" rel="noopener noreferrer" class="btn">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                    <a href="#" class="btn">
+                                        <i class="fas fa-play"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="achievements">
-            <h2>Leadership & Achievements</h2>
-            <div class="achievements-container">
-                <div class="leadership">
-                    <h3>Leadership Roles</h3>
-                    <div class="leadership-item">
-                        <h4>IEEE:</h4>
-                        <ul>
-                            <li>IEEE India Council (INDUSTRY & EXTERNAL RELATIONS)</li>
-                            <li>IEEE CS Kerala Chapter (Kochi Hub Student Representative)</li>
-                            <li>IEEE Sahrdaya SB (Chairperson)</li>
-                            <li>IEEEXtreme Ambassador (2024)</li>
-                        </ul>
-                    </div>
-                    <div class="leadership-item">
-                        <h4>PLACEMENT CELL:</h4>
-                        <ul>
-                            <li>Placement Coordinator (2021 - 2025)</li>
-                        </ul>
-                    </div>
-                    <div class="leadership-item">
-                        <h4>IEDC:</h4>
-                        <ul>
-                            <li>Vice President (2023-2024)</li>
-                            <li>Media Specialist (2022-2023)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="achievements-list">
-                    <h3>Notable Achievements</h3>
-                    <ul>
-                        <li>R10 Outstanding Volunteer Award 2024 (First student from the Asia-Pacific Region to receive this prestigious award.)</li>
-                        <li>1st Runner-Up in IBM International Gen AI Conclave 2024.</li>
-                        <li>Awarded the IEEE Outstanding Student Volunteer Award 2023 by the Computer Society Kerala chapter.</li>
-                        <li>Achieved the bronze medal in national-level firing competition held in Delhi.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-form">
-                <form id="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info glass-card">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <a href="mailto:robinfrancis186@gmail.com">robinfrancis186@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <h3>Phone</h3>
+                            <a href="tel:+918078256598">+91 8078256598</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Location</h3>
+                            <p>Irinjalakuda, Thrissur, Kerala</p>
+                        </div>
+                    </div>
+                    <div class="contact-form glass-card">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Robin Francis. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="mailto:robinfrancis186@gmail.com" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/yourusername" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
+            <div class="footer-info">
+                <p>&copy; 2024 Robin Francis. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="mailto:robinfrancis186@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/robin-francis-b43565175" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/robinfrancis186" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Loading animation script -->
+    <script>
+        window.addEventListener('load', function() {
+            document.querySelector('.loading-screen').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
