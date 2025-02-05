@@ -1090,38 +1090,107 @@ section h2::after {
     color: var(--text-primary);
 }
 
-/* Footer Enhancement */
+/* Footer */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-light);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
 .footer-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 3rem 2rem;
-    display: flex;
-    justify-content: space-between;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
     align-items: center;
+    gap: 2rem;
+}
+
+.footer-left .copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-center .made-with {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-center .fa-heart {
+    color: #ff4d4d;
+    animation: heartbeat 1.5s ease infinite;
+}
+
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .footer-social {
     display: flex;
     gap: 1.5rem;
+    justify-content: flex-end;
 }
 
-/* Responsive Design */
+.footer .social-link {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+
+.footer .social-link:hover {
+    color: white;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive footer */
 @media (max-width: 768px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .project-links {
-        flex-direction: column;
-    }
-
     .footer-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 1.5rem;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
     }
 }
