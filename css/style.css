@@ -87,12 +87,26 @@ nav {
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    text-decoration: none;
-    letter-spacing: -1px;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    max-width: 60px;
+}
+
+.logo-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(1);
+    object-fit: contain;
+}
+
+[data-theme="dark"] .logo-image {
+    filter: brightness(1.2);
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -1595,4 +1609,63 @@ section h2::after {
 
 .glass-card:hover::before {
     opacity: 1;
+}
+
+.multilingual-name {
+    display: inline-block;
+    min-width: 100%;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+}
+
+.multilingual-name::after {
+    content: attr(data-language);
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.multilingual-name.animating::after {
+    opacity: 1;
+}
+
+.hero-title {
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+@keyframes fadeInOut {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px) scale(0.95);
+        filter: blur(4px);
+    }
+    20%, 80% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-20px) scale(0.95);
+        filter: blur(4px);
+    }
+}
+
+.multilingual-name.animating {
+    animation: fadeInOut 3s ease-in-out;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

@@ -372,4 +372,40 @@ const timelineObserver = new IntersectionObserver((entries) => {
 
 timelineItems.forEach(item => {
     timelineObserver.observe(item);
+});
+
+// Multilingual Name Animation
+const multilingualNames = [
+    { text: 'Robin Francis', language: 'English' },
+    { text: 'റോബിൻ ഫ്രാൻസിസ്', language: 'Malayalam' },
+    { text: 'रॉबिन फ्रांसिस', language: 'Hindi' },
+    { text: 'ロビン フランシス', language: 'Japanese' },
+    { text: 'Robin Franzis', language: 'German' },
+    { text: '罗宾·弗朗西斯', language: 'Chinese' }
+];
+
+function animateMultilingualName() {
+    const nameElement = document.querySelector('.multilingual-name');
+    let currentIndex = 0;
+
+    function updateName() {
+        const { text, language } = multilingualNames[currentIndex];
+        nameElement.textContent = text;
+        nameElement.setAttribute('data-language', language);
+        nameElement.classList.add('animating');
+
+        setTimeout(() => {
+            nameElement.classList.remove('animating');
+            currentIndex = (currentIndex + 1) % multilingualNames.length;
+            setTimeout(updateName, 500); // Delay before next animation
+        }, 3000); // Increased duration for better readability
+    }
+
+    updateName();
+}
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateMultilingualName();
+    // ... existing DOMContentLoaded code ...
 }); 
