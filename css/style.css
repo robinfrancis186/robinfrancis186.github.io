@@ -86,6 +86,12 @@ nav {
     align-items: center;
 }
 
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -107,12 +113,6 @@ nav {
 
 .logo:hover .logo-image {
     transform: scale(1.05);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
 }
 
 .nav-links a {
