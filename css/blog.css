@@ -6,7 +6,7 @@
 }
 
 .blog-header h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     margin-bottom: 2rem;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
@@ -44,15 +44,15 @@
 
 /* Blog Grid */
 .blog-grid {
-    padding: 2rem;
+    padding: 2rem max(1rem, calc((100% - 1400px) / 2));
+    width: 100%;
 }
 
 .blog-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .blog-card {
@@ -60,22 +60,29 @@
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-light);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .blog-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .blog-image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 
 .blog-content {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .blog-date {
@@ -121,7 +128,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
     z-index: 1000;
-    padding: 2rem;
+    padding: 1rem;
     overflow-y: auto;
 }
 
@@ -133,12 +140,13 @@
 
 .gallery-content {
     position: relative;
-    max-width: 1200px;
-    width: 100%;
+    max-width: min(1200px, 95vw);
+    margin: 1rem auto;
+    max-height: 90vh;
+    overflow-y: auto;
     background: var(--card-bg);
     border-radius: 1rem;
     overflow: hidden;
-    margin: 2rem auto;
 }
 
 .gallery-content img {
@@ -148,7 +156,7 @@
 }
 
 .gallery-info {
-    padding: 2rem;
+    padding: 2rem max(1rem, 5%);
     color: var(--text-primary);
 }
 
@@ -253,21 +261,98 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .blog-header h1 {
-        font-size: 2rem;
+    .blog-header {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .blog-grid {
+        padding: 1rem;
+    }
+
+    .blog-posts {
+        gap: 1rem;
+    }
+
+    .blog-card {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .blog-content {
+        padding: 1rem;
+    }
+
+    .blog-title {
+        font-size: 1.25rem;
+    }
+
+    .blog-description {
+        font-size: 0.9rem;
+    }
+
+    .gallery-modal {
+        padding: 0.5rem;
     }
 
     .gallery-content {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-content img {
-        height: 300px;
+        margin: 0.5rem;
     }
 
     .gallery-info {
-        padding: 1.5rem;
+        padding: 1rem;
     }
+
+    .gallery-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .modal-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .blog-images {
+        grid-template-columns: 1fr;
+    }
+
+    .close-modal {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .blog-card:hover {
+        transform: none;
+    }
+
+    .blog-content-image:hover {
+        transform: none;
+    }
+
+    .view-btn:hover {
+        transform: none;
+    }
+}
+
+/* Dark Mode Optimizations */
+[data-theme="dark"] .blog-card {
+    background: var(--card-bg);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .gallery-modal {
+    background: rgba(0, 0, 0, 0.95);
 }
 
 /* Gallery View */
@@ -352,4 +437,24 @@
     margin-top: 2rem;
     color: var(--accent-primary);
     font-size: 0.9rem;
+}
+
+/* Blog Images in Modal */
+.blog-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.blog-content-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.blog-content-image:hover {
+    transform: scale(1.02);
 } 

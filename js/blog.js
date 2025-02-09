@@ -4,9 +4,16 @@ let blogPosts = [
         id: 1,
         title: "SoulSync: Pioneering AI for Cognitive Wellness",
         date: "2024-02-09",
-        image: "images/blog/1720937570476.jpeg",
+        image: "images/blog/1720937570476.jpeg", // Team photo
         description: "Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.",
         content: `
+            <div class="blog-images">
+                <img src="images/blog/1720937570476.jpeg" alt="Team Bits n Bytes" class="blog-content-image">
+                <img src="images/blog/1720937571684.jpeg" alt="Award Ceremony" class="blog-content-image">
+                <img src="images/blog/1720937573469.jpeg" alt="Project Presentation" class="blog-content-image">
+                <img src="images/blog/1720937580394.jpeg" alt="Team with Mentors" class="blog-content-image">
+            </div>
+
             <h2>A Triumph at the IBM watsonx Challenge</h2>
             <p>We are thrilled to announce that Bits n Bytes secured 1st Runner-Up at the prestigious IBM watsonx Challenge during the International GenAI Conclave! Our innovation, SoulSync, is an AI-powered companion designed to enhance memory, cognitive function, and emotional well-being in the elderly through personalized storytelling and intelligent reminders.</p>
 
@@ -69,12 +76,12 @@ function formatDate(dateString) {
 function createBlogCard(post) {
     return `
         <div class="blog-card" data-id="${post.id}">
-            <img src="${post.image}" alt="${post.title}" class="blog-image">
+            <img src="${post.image}" alt="${post.title}" class="blog-image" loading="lazy">
             <div class="blog-content">
                 <p class="blog-date">${formatDate(post.date)}</p>
                 <h2 class="blog-title">${post.title}</h2>
                 <p class="blog-description">${post.description}</p>
-                <a href="#" class="blog-read-more">
+                <a href="#" class="blog-read-more" aria-label="Read more about ${post.title}">
                     Read More <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -85,14 +92,30 @@ function createBlogCard(post) {
 // Function to render blog posts
 function renderBlogPosts() {
     const blogContainer = document.querySelector('.blog-posts');
-    if (blogContainer) {
-        blogContainer.innerHTML = blogPosts.map(post => createBlogCard(post)).join('');
-    }
+    if (!blogContainer) return;
+
+    const blogHTML = blogPosts.map(post => createBlogCard(post)).join('');
+    blogContainer.innerHTML = blogHTML;
+
+    // Add click event listeners to blog cards
+    document.querySelectorAll('.blog-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const postId = parseInt(card.dataset.id);
+            const postIndex = blogPosts.findIndex(post => post.id === postId);
+            if (postIndex !== -1) {
+                openGalleryModal(postIndex);
+            }
+        });
+    });
 }
 
-// Initialize blog posts immediately and on DOMContentLoaded
-renderBlogPosts();
-document.addEventListener('DOMContentLoaded', renderBlogPosts);
+// Initialize blog posts when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderBlogPosts);
+} else {
+    renderBlogPosts();
+}
 
 // View toggle functionality
 const viewButtons = document.querySelectorAll('.view-btn');
