@@ -3,19 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Robin Francis - Blog posts and updates about technology, development, and IEEE activities">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net fonts.googleapis.com fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' https: data: blob:; font-src 'self' https: data: fonts.gstatic.com; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: cdn.jsdelivr.net www.googletagmanager.com;">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Robin Francis - Blog posts about technology, development, and achievements">
     <title>Robin Francis - Blog</title>
-    
-    <!-- Resource Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
@@ -54,39 +43,78 @@
         <!-- Blog Header -->
         <section class="blog-header">
             <div class="container">
-                <h1>Blog & Updates</h1>
-                <div class="view-toggle">
-                    <button class="view-btn active" data-view="grid">
-                        <i class="fas fa-th-large"></i> Grid View
-                    </button>
-                    <button class="view-btn" data-view="gallery">
-                        <i class="fas fa-images"></i> Gallery View
-                    </button>
-                </div>
+                <h1>Latest Updates</h1>
+                <p class="subtitle">Sharing my journey through technology and innovation</p>
             </div>
         </section>
 
-        <!-- Blog Grid -->
+        <!-- Featured Post -->
+        <section class="featured-post">
+            <div class="container">
+                <article class="post-card featured">
+                    <div class="post-image">
+                        <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team" loading="lazy">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">February 9, 2024</span>
+                            <span class="post-category">Achievement</span>
+                        </div>
+                        <h2>SoulSync: Pioneering AI for Cognitive Wellness</h2>
+                        <p class="post-excerpt">Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.</p>
+                        <button class="read-more" data-post="1">Read Full Story</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Blog Posts Grid -->
         <section class="blog-grid">
             <div class="container">
-                <div class="blog-posts">
-                    <!-- Blog posts will be dynamically added here -->
+                <div class="posts-grid">
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="images/blog/1720937571684.jpeg" alt="Virtual Mouse Project" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">February 7, 2024</span>
+                                <span class="post-category">Project</span>
+                            </div>
+                            <h3>Virtual Mouse Project Update</h3>
+                            <p class="post-excerpt">An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.</p>
+                            <button class="read-more" data-post="2">Read More</button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="images/blog/1720937573469.jpeg" alt="QuestionPro Development" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date">February 7, 2024</span>
+                                <span class="post-category">Development</span>
+                            </div>
+                            <h3>QuestionPro Development</h3>
+                            <p class="post-excerpt">A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.</p>
+                            <button class="read-more" data-post="3">Read More</button>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery View Modal -->
-        <div class="gallery-modal">
-            <span class="close-modal">&times;</span>
-            <div class="gallery-content">
-                <img id="gallery-image" src="" alt="Gallery image">
-                <div class="gallery-info">
-                    <h2 id="gallery-title"></h2>
-                    <p id="gallery-date"></p>
-                    <p id="gallery-description"></p>
+        <!-- Post Modal -->
+        <div class="post-modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+                <button class="close-modal" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-content">
+                    <!-- Post content will be dynamically inserted here -->
                 </div>
-                <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </main>
@@ -117,8 +145,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-    <script src="js/animations.js" defer></script>
     <script src="js/script.js" defer></script>
     <script src="js/blog.js" defer></script>
 </body>
