@@ -225,6 +225,37 @@ section {
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Base styles for cards */
 .glass-card,
 .blog-card,
@@ -756,4 +787,126 @@ button {
 
 .nav-links a:active {
     transform: scale(0.95) !important;
+}
+
+/* Section Animations */
+section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+section:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Hero Section Animations */
+.hero-title {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-subtitle {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+}
+
+.hero-description {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+}
+
+.social-links {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.9s forwards;
+}
+
+/* Card Animations */
+.glass-card,
+.blog-card,
+.project-card,
+.contact-item,
+.achievement-card,
+.timeline-item,
+.skills-group {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Interactive Element Animations */
+.btn,
+.theme-toggle,
+.social-link,
+.read-more,
+.download-btn {
+    transition: all 0.3s ease !important;
+}
+
+.btn:hover,
+.theme-toggle:hover,
+.social-link:hover,
+.read-more:hover,
+.download-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn:active,
+.theme-toggle:active,
+.social-link:active,
+.read-more:active,
+.download-btn:active {
+    transform: translateY(0) !important;
+}
+
+/* Navigation Animation */
+.nav-links a {
+    position: relative;
+    transition: color 0.3s ease !important;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width 0.3s ease !important;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Timeline Animation */
+.timeline-item {
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Form Input Animations */
+.form-group input,
+.form-group textarea {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Loading Animation for Images */
+img {
+    opacity: 0;
+    transition: opacity 0.5s ease-out !important;
+}
+
+img.loaded {
+    opacity: 1;
 }
