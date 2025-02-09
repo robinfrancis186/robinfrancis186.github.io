@@ -30,15 +30,21 @@ const body = document.body;
 function toggleMobileMenu() {
     const isOpen = navLinks.classList.contains('active');
     
-    mobileMenu.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    mobileMenuIcon.classList.toggle('fa-bars');
-    mobileMenuIcon.classList.toggle('fa-times');
-    
-    body.style.overflow = isOpen ? '' : 'hidden';
+    if (isOpen) {
+        navLinks.classList.remove('active');
+        mobileMenuIcon.classList.remove('fa-times');
+        mobileMenuIcon.classList.add('fa-bars');
+        body.style.overflow = '';
+    } else {
+        navLinks.classList.add('active');
+        mobileMenuIcon.classList.remove('fa-bars');
+        mobileMenuIcon.classList.add('fa-times');
+        body.style.overflow = 'hidden';
+    }
 }
 
 mobileMenu.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
     toggleMobileMenu();
 });
@@ -46,7 +52,24 @@ mobileMenu.addEventListener('click', (e) => {
 // Close mobile menu when clicking a link
 navLinks.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const href = e.target.getAttribute('href');
         toggleMobileMenu();
+        
+        if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'auto'
+                });
+            }
+        } else {
+            window.location.href = href;
+        }
     }
 });
 
@@ -58,6 +81,13 @@ document.addEventListener('click', (e) => {
         toggleMobileMenu();
     }
 });
+
+// Prevent scroll when mobile menu is open
+document.addEventListener('touchmove', (e) => {
+    if (navLinks.classList.contains('active')) {
+        e.preventDefault();
+    }
+}, { passive: false });
 
 // Update active nav link based on scroll position
 function updateActiveNavLink() {

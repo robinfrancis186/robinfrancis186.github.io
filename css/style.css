@@ -42,6 +42,38 @@
     rotate: none !important;
     animation: none !important;
     transition: none !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Allow text selection for specific elements */
+p, h1, h2, h3, h4, h5, h6, li, span, a {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Prevent text selection for icons and buttons */
+i, button, .theme-toggle, .mobile-menu {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Fix for mobile tap highlight */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for mobile touch behavior */
+@media (hover: none) {
+    * {
+        touch-action: manipulation;
+    }
 }
 
 body {
@@ -50,6 +82,8 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
 }
 
 /* Theme Toggle */
@@ -102,6 +136,9 @@ nav {
     margin: 0;
     padding: 0;
     transition: none;
+    transform: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .logo {
@@ -204,6 +241,10 @@ nav {
     position: relative;
     z-index: 1;
     will-change: transform, opacity;
+    transform: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: auto;
 }
 
 .hero-title {
@@ -267,6 +308,10 @@ section {
     margin: 0 auto;
     opacity: 1;
     transform: none;
+    transform: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: auto;
 }
 
 section.fade-in {
@@ -290,6 +335,10 @@ section.fade-in {
     position: relative;
     overflow: hidden;
     transition: none;
+    transform: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: auto;
 }
 
 /* Dark mode adjustments */
@@ -426,11 +475,7 @@ button:hover {
 
 /* Animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: none;
-    }
-    to {
+    from, to {
         opacity: 1;
         transform: none;
     }
@@ -441,17 +486,9 @@ button:hover {
 }
 
 @keyframes pulse {
-    0% {
+    0%, 50%, 100% {
+        opacity: 1;
         transform: none;
-        opacity: 0.1;
-    }
-    50% {
-        transform: none;
-        opacity: 0.15;
-    }
-    100% {
-        transform: none;
-        opacity: 0.1;
     }
 }
 
@@ -657,7 +694,7 @@ section h2::after {
 
 /* Loading Spinner Animation */
 @keyframes spin {
-    to {
+    from, to {
         transform: none;
     }
 }
@@ -668,11 +705,7 @@ section h2::after {
 
 /* Form Message Animation */
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: none;
-    }
-    to {
+    from, to {
         opacity: 1;
         transform: none;
     }
@@ -790,10 +823,7 @@ section h2::after {
 
 /* Animation for skill bars */
 @keyframes slideIn {
-    from {
-        transform: none;
-    }
-    to {
+    from, to {
         transform: none;
     }
 }
@@ -1569,102 +1599,54 @@ section h2::after {
 /* Remove all hover-related styles */
 *:hover {
     all: unset !important;
+    cursor: inherit;
 }
 
-/* Ensure buttons remain clickable */
+/* Restore cursor for interactive elements */
 button, 
 a, 
-input[type="submit"] {
-    cursor: pointer;
+input[type="submit"],
+.theme-toggle,
+.mobile-menu,
+.nav-links a {
+    cursor: pointer !important;
 }
 
 /* Remove all animation keyframes */
-@keyframes fadeIn, pulse, slideIn, spin, heartbeat, gradientFlow {
-    from, to, 0%, 50%, 100% {
-        transform: none;
+@keyframes fadeIn {
+    from, to {
         opacity: 1;
-        background-position: 0% 50%;
+        transform: none;
     }
 }
 
-/* Loading screen - remove animations */
-.loading-screen {
-    display: none;
+@keyframes pulse {
+    0%, 50%, 100% {
+        opacity: 1;
+        transform: none;
+    }
 }
 
-/* Animation classes - remove all animations */
-.fade-up,
-.fade-in,
-.scale-in,
-.slide-in-left,
-.slide-in-right {
-    opacity: 1;
-    transform: none;
+@keyframes slideIn {
+    from, to {
+        opacity: 1;
+        transform: none;
+    }
 }
 
-/* Skill bars - remove animations */
-.skill-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-    border-radius: 4px;
-    transform: none;
-    animation: none;
+@keyframes spin {
+    from, to {
+        transform: none;
+    }
 }
 
-/* Footer heart - remove animation */
-.footer-center .fa-heart {
-    color: #ff4d4d;
-    animation: none;
+/* Fix for smooth scrolling */
+html {
+    scroll-behavior: auto;
 }
 
-/* Mobile menu - remove transitions */
-.mobile-menu i {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    transition: none;
-}
-
-/* Navigation links - remove transitions */
-.nav-links {
-    transition: none;
-}
-
-/* Theme toggle - remove transitions */
-.theme-toggle {
-    transition: none;
-}
-
-/* Form elements - remove transitions */
-input, textarea, button {
-    transition: none;
-}
-
-/* Contact form - remove transitions */
-.contact-form {
-    transition: none;
-}
-
-/* Progress bar - remove transitions */
-.progress-bar {
-    transition: none;
-}
-
-/* Loading spinner - remove animation */
-.fa-spinner {
-    animation: none;
-}
-
-/* Remove all transform properties */
-[class*="transform"],
-[style*="transform"] {
-    transform: none !important;
-}
-
-/* Remove all perspective and 3D properties */
-* {
-    perspective: none !important;
-    transform-style: flat !important;
-    backface-visibility: visible !important;
-    transition: none !important;
-    animation: none !important;
+/* Fix for mobile scrolling */
+body {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
 }
