@@ -426,36 +426,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close mobile menu when clicking on a link
+    // Handle navigation clicks
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Handle internal anchor links
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                
+                if (targetSection) {
+                    const headerOffset = 80;
+                    const targetPosition = targetSection.offsetTop - headerOffset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            // Close mobile menu in any case
             nav.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn?.classList.remove('active');
             document.body.style.overflow = '';
         });
     });
 
-    // Scroll behavior
-    let lastScroll = 0;
-    const scrollThreshold = 100;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Add/remove scrolled class based on scroll position
-        if (currentScroll > scrollThreshold) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        // Update active link based on scroll position
-        updateActiveNavLink();
-
-        lastScroll = currentScroll;
-    });
-
-    // Update active navigation link based on scroll position
+    // Update active link based on scroll position
     function updateActiveNavLink() {
         const scrollPosition = window.scrollY + 100;
 
@@ -475,22 +474,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth scroll for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerOffset = 80;
-                const targetPosition = targetSection.offsetTop - headerOffset;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    // Update active link on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Initial update of active link
+    updateActiveNavLink();
 }); 

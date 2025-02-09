@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robin Francis - Blog posts and updates about technology, development, and IEEE activities">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:; font-src 'self' https: data:; upgrade-insecure-requests;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <title>Robin Francis - Blog</title>
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="mobile-menu" aria-label="Menu toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#mission">Mission</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#resume">Resume</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Blog Header -->
+        <section class="blog-header">
+            <div class="container">
+                <h1>Blog & Updates</h1>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i> Grid View
+                    </button>
+                    <button class="view-btn" data-view="gallery">
+                        <i class="fas fa-images"></i> Gallery View
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Grid -->
+        <section class="blog-grid">
+            <div class="container">
+                <div class="blog-posts">
+                    <!-- Blog posts will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery View Modal -->
+        <div class="gallery-modal">
+            <span class="close-modal">&times;</span>
+            <div class="gallery-content">
+                <img id="gallery-image" src="" alt="Gallery image">
+                <div class="gallery-info">
+                    <h2 id="gallery-title"></h2>
+                    <p id="gallery-date"></p>
+                    <p id="gallery-description"></p>
+                </div>
+                <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="copyright">&copy; 2025 Robin Francis. All rights reserved.</p>
+            </div>
+            <div class="footer-center">
+                <p class="made-with">Made with <i class="fas fa-heart"></i> using modern web technologies</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-social">
+                    <a href="mailto:robinfrancis186@gmail.com" title="Email" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/robin-francis-b43565175" title="LinkedIn" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/robinfrancis186" title="GitHub" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/blog.js" defer></script>
+</body>
+</html> 

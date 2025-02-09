@@ -9,7 +9,7 @@
     <meta property="og:title" content="Robin Francis - Portfolio">
     <meta property="og:description" content="Computer Science Student and Developer showcasing innovative projects and technical skills">
     <meta property="og:image" content="images/profile.jpg">
-    <meta property="og:url" content="https://robinfrancis186.github.io">
+    <meta property="og:url" content="https://robinfrancis186.me">
     
     <!-- Schema.org markup for rich snippets -->
     <script type="application/ld+json">
@@ -17,7 +17,7 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Robin Francis",
-        "jobTitle": "Computer Science Student & Full Stack Developer",
+        "jobTitle": "Computer Science Student & Developer",
         "url": "https://robinfrancis186.github.io",
         "image": "images/profile.jpg",
         "sameAs": [
@@ -72,11 +72,12 @@
     </script>
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:; font-src 'self' https: data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:; font-src 'self' https: data:; upgrade-insecure-requests;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     
     <!-- CDN Preconnect -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -144,6 +145,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="./blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -161,7 +163,7 @@
                     <div class="hero-subtitle">
                         <span class="designer">Computer Science Student</span>
                         <span class="separator">&lt;/&gt;</span>
-                        <span class="coder">Full Stack Developer</span>
+                        <span class="coder">Developer</span>
                     </div>
                     <p class="hero-description">Building innovative solutions that make a difference</p>
                     <div class="social-links">
@@ -203,7 +205,7 @@
                 <div class="about-content glass-card">
                     <div class="about-text">
                         <p>I am a passionate Computer Science student at Sahrdaya College of Engineering & Technology, 
-                        with a strong foundation in full-stack development and a keen interest in emerging technologies. 
+                        with a strong foundation in development and a keen interest in emerging technologies. 
                         My journey in technology is driven by a desire to create meaningful solutions that address real-world challenges.</p>
                         
                         <p>As an active member of IEEE and various technical communities, I constantly seek opportunities 
@@ -214,7 +216,7 @@
                         <div class="highlight-item">
                             <i class="fas fa-code"></i>
                             <h3>Developer</h3>
-                            <p>Full-stack development with focus on user experience</p>
+                            <p>Developer with focus on innovative</p>
                         </div>
                         <div class="highlight-item">
                             <i class="fas fa-users"></i>
@@ -460,7 +462,7 @@
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then(registration => {
                         console.log('ServiceWorker registration successful');
                     })
