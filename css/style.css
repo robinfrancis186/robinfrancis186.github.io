@@ -228,7 +228,7 @@ section {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -236,16 +236,18 @@ section {
     }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInLeft {
     from {
         opacity: 0;
+        transform: translateX(-30px);
     }
     to {
         opacity: 1;
+        transform: translateX(0);
     }
 }
 
-@keyframes slideInRight {
+@keyframes fadeInRight {
     from {
         opacity: 0;
         transform: translateX(30px);
@@ -254,6 +256,22 @@ section {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Base styles for cards */
@@ -755,7 +773,9 @@ button {
 .btn,
 .theme-toggle,
 .social-link {
-    transition: transform 0.2s ease-out !important;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    position: relative;
+    overflow: hidden;
 }
 
 .read-more:active,
@@ -763,7 +783,7 @@ button {
 .btn:active,
 .theme-toggle:active,
 .social-link:active {
-    transform: scale(0.95) !important;
+    transform: translateY(0) !important;
 }
 
 /* Modal Animation */
@@ -782,17 +802,30 @@ button {
 
 /* Navigation Links Animation */
 .nav-links a {
-    transition: transform 0.2s ease-out !important;
+    position: relative;
+    transition: color 0.3s ease !important;
 }
 
-.nav-links a:active {
-    transform: scale(0.95) !important;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Section Animations */
 section {
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 section:nth-child(even) {
@@ -802,22 +835,22 @@ section:nth-child(even) {
 /* Hero Section Animations */
 .hero-title {
     opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero-subtitle {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 0.3s forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
 }
 
 .hero-description {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 0.6s forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
 }
 
 .social-links {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 0.9s forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
 }
 
 /* Card Animations */
@@ -828,77 +861,40 @@ section:nth-child(even) {
 .achievement-card,
 .timeline-item,
 .skills-group {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-/* Interactive Element Animations */
-.btn,
-.theme-toggle,
-.social-link,
-.read-more,
-.download-btn {
-    transition: all 0.3s ease !important;
+.glass-card:hover,
+.project-card:hover,
+.contact-item:hover,
+.achievement-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
 }
 
-.btn:hover,
-.theme-toggle:hover,
-.social-link:hover,
-.read-more:hover,
-.download-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-}
-
-.btn:active,
-.theme-toggle:active,
-.social-link:active,
-.read-more:active,
-.download-btn:active {
-    transform: translateY(0) !important;
-}
-
-/* Navigation Animation */
-.nav-links a {
-    position: relative;
-    transition: color 0.3s ease !important;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-primary);
-    transition: width 0.3s ease !important;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Timeline Animation */
+/* Timeline Animations */
 .timeline-item {
     opacity: 0;
-    animation: slideInRight 0.8s ease-out forwards;
+    animation: fadeInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.timeline-item:nth-child(even) {
-    animation-delay: 0.2s;
+.timeline-item:nth-child(odd) {
+    animation: fadeInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Form Input Animations */
 .form-group input,
 .form-group textarea {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent-primary) !important;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+    transform: translateY(-1px) !important;
 }
 
 /* Loading Animation for Images */
