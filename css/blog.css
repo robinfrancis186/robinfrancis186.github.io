@@ -15,6 +15,9 @@
     -webkit-text-fill-color: transparent;
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: float 5s ease-in-out infinite;
 }
 
 .blog-header .subtitle {
@@ -65,13 +68,14 @@
     border-radius: 1rem;
     opacity: 0;
     animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .post-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.2) !important;
 }
 
 .post-image {
@@ -208,6 +212,8 @@
     opacity: 0;
     transform: translateY(20px) scale(0.98);
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .post-modal.active .modal-container {
@@ -234,10 +240,12 @@
     justify-content: center;
     border-radius: 50%;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .close-modal:hover {
-    transform: rotate(90deg) scale(1.1) !important;
+    transform: rotate(90deg) translateZ(10px) !important;
     background: var(--accent-primary) !important;
     color: white !important;
 }
@@ -292,11 +300,13 @@
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .tag:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) translateZ(10px) rotateX(2deg) !important;
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.2) !important;
     background: var(--accent-primary) !important;
     color: white !important;
 }
@@ -414,4 +424,28 @@
 
 .post-card:hover .post-image img {
     transform: scale(1.05) !important;
+}
+
+/* 3D Animation Keyframes */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+    50% {
+        transform: translateY(-5px) translateZ(20px) rotateX(2deg) rotateY(-2deg);
+    }
+    100% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+}
+
+@keyframes modalFloat {
+    from {
+        transform: translateY(20px) translateZ(-50px) rotateX(5deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) translateZ(0) rotateX(0);
+        opacity: 1;
+    }
 } 

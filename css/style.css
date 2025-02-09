@@ -906,3 +906,91 @@ img {
 img.loaded {
     opacity: 1;
 }
+
+/* 3D Animation Keyframes */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+    50% {
+        transform: translateY(-5px) translateZ(20px) rotateX(2deg) rotateY(-2deg);
+    }
+    100% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+}
+
+/* Card 3D Effects */
+.glass-card,
+.project-card,
+.contact-item,
+.achievement-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.glass-card:hover,
+.project-card:hover,
+.contact-item:hover,
+.achievement-card:hover {
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Interactive Elements 3D */
+.btn,
+.theme-toggle,
+.social-link,
+.read-more,
+.download-btn {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.btn:hover,
+.theme-toggle:hover,
+.social-link:hover,
+.read-more:hover,
+.download-btn:hover {
+    transform: translateY(-2px) translateZ(20px) rotateX(2deg) !important;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Timeline Item 3D */
+.timeline-item {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.timeline-item::before {
+    transform: translateZ(10px);
+}
+
+/* Section Headers 3D */
+section h2 {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-primary);
+    transform: translateX(-50%) translateZ(-5px);
+    opacity: 0.7;
+}
+
+/* Hero Title 3D */
+.hero-title {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: float 5s ease-in-out infinite;
+}
