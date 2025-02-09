@@ -2,17 +2,56 @@
 let blogPosts = [
     {
         id: 1,
+        title: "SoulSync: Pioneering AI for Cognitive Wellness",
+        date: "2024-02-09",
+        image: "images/blog/soulsync-ibm-challenge.jpg",
+        description: "Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.",
+        content: `
+            <h2>A Triumph at the IBM watsonx Challenge</h2>
+            <p>We are thrilled to announce that Bits n Bytes secured 1st Runner-Up at the prestigious IBM watsonx Challenge during the International GenAI Conclave! Our innovation, SoulSync, is an AI-powered companion designed to enhance memory, cognitive function, and emotional well-being in the elderly through personalized storytelling and intelligent reminders.</p>
+
+            <h3>The Vision Behind SoulSync</h3>
+            <p>Aging presents challenges such as memory loss and emotional isolation. SoulSync aims to address these through:</p>
+            <ul>
+                <li>Personalized storytelling to evoke nostalgia and strengthen cognitive function.</li>
+                <li>AI-driven reminders for medications, appointments, and daily tasks.</li>
+                <li>Empathetic conversations to provide companionship and emotional support.</li>
+            </ul>
+
+            <h3>Meet Team Bits n Bytes</h3>
+            <p>This accomplishment was made possible by our dedicated team:</p>
+            <ul>
+                <li>Joel Jaison</li>
+                <li>Vivek K J</li>
+                <li>Adwaith Jayasankar</li>
+            </ul>
+            <p>Together, we combined expertise in AI, cognitive science, and user experience to bring SoulSync to life.</p>
+
+            <h3>Acknowledgments</h3>
+            <p>We extend our heartfelt gratitude to our mentors and supporters:</p>
+            <p>Carl Francis, Roshini Varma, Srinivasan Muthuswamy, Anbumunee P., Latha Raj, Kamitha Jairaj, Sarika Nair, Utpalendra Kumar Deka, and Anil Antony</p>
+            <p>Sahrdaya College of Engineering & Technology (SCET) for their unwavering support and encouragement.</p>
+
+            <h3>The Road Ahead</h3>
+            <p>This achievement fuels our commitment to advancing SoulSync and broadening its impact. We envision a future where AI redefines companionship and cognitive support, empowering individuals to lead enriched lives.</p>
+            <p>Stay tuned as we continue our journey of innovation!</p>
+
+            <p class="tags">#GenerativeAI #Innovation #Hackathon #TeamBitsNBytes #SoulSync #AIForGood #IBM</p>
+        `
+    },
+    {
+        id: 2,
         title: "Virtual Mouse Project Update",
         date: "2024-02-07",
-        image: "images/virtual-mouse.jpg",
+        image: "images/blog/virtual-mouse-project.jpg",
         description: "An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.",
         content: "Full blog post content about the Virtual Mouse project development and features..."
     },
     {
-        id: 2,
+        id: 3,
         title: "QuestionPro Development",
         date: "2024-02-07",
-        image: "images/questionpro.jpg",
+        image: "images/blog/questionpro-platform.jpg",
         description: "A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.",
         content: "Full blog post content about the QuestionPro platform development..."
     }
