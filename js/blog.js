@@ -4,7 +4,7 @@ let blogPosts = [
         id: 1,
         title: "SoulSync: Pioneering AI for Cognitive Wellness",
         date: "2024-02-09",
-        image: "images/blog/soulsync-ibm-challenge.jpg",
+        image: "images/blog/1720937570476.jpeg",
         description: "Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.",
         content: `
             <h2>A Triumph at the IBM watsonx Challenge</h2>
@@ -43,7 +43,7 @@ let blogPosts = [
         id: 2,
         title: "Virtual Mouse Project Update",
         date: "2024-02-07",
-        image: "images/blog/virtual-mouse-project.jpg",
+        image: "images/blog/1720937571684.jpeg",
         description: "An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.",
         content: "Full blog post content about the Virtual Mouse project development and features..."
     },
@@ -51,11 +51,13 @@ let blogPosts = [
         id: 3,
         title: "QuestionPro Development",
         date: "2024-02-07",
-        image: "images/blog/questionpro-platform.jpg",
+        image: "images/blog/1720937573469.jpeg",
         description: "A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.",
         content: "Full blog post content about the QuestionPro platform development..."
     }
 ];
+
+let currentPostIndex = 0;
 
 // Function to format date
 function formatDate(dateString) {
@@ -83,8 +85,14 @@ function createBlogCard(post) {
 // Function to render blog posts
 function renderBlogPosts() {
     const blogContainer = document.querySelector('.blog-posts');
-    blogContainer.innerHTML = blogPosts.map(post => createBlogCard(post)).join('');
+    if (blogContainer) {
+        blogContainer.innerHTML = blogPosts.map(post => createBlogCard(post)).join('');
+    }
 }
+
+// Initialize blog posts immediately and on DOMContentLoaded
+renderBlogPosts();
+document.addEventListener('DOMContentLoaded', renderBlogPosts);
 
 // View toggle functionality
 const viewButtons = document.querySelectorAll('.view-btn');
@@ -171,11 +179,6 @@ function navigateGallery(direction) {
     }
     openGalleryModal(currentPostIndex);
 }
-
-// Initialize blog posts
-document.addEventListener('DOMContentLoaded', () => {
-    renderBlogPosts();
-});
 
 // Function to add a new blog post
 function addBlogPost(post) {
