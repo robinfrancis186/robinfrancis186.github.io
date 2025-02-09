@@ -51,10 +51,12 @@
 
 /* Post Card */
 .post-card {
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
 }
 
 .post-image {
@@ -138,8 +140,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-container {
@@ -148,18 +151,23 @@
     max-width: 1000px;
     max-height: 90vh;
     margin: 2rem auto;
-    background: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 1rem;
     overflow-y: auto;
-    box-shadow: var(--card-shadow);
 }
 
 .close-modal {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: none;
-    border: none;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     color: var(--text-primary);
     font-size: 1.5rem;
     cursor: pointer;
@@ -170,7 +178,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: var(--bg-secondary);
 }
 
 .modal-content {
@@ -250,22 +257,21 @@
     }
 }
 
-/* Dark Mode Optimizations */
-[data-theme="dark"] .modal-overlay {
-    background: rgba(0, 0, 0, 0.9);
+/* Remove all transitions and hover effects */
+.post-card,
+.post-image img,
+.read-more,
+.modal-overlay,
+.modal-container {
+    transition: none !important;
+    transform: none !important;
 }
 
-/* Touch Device Optimizations */
+/* Remove Touch Device Optimizations section as it's no longer needed */
 @media (hover: none) {
-    .post-card:hover {
-        transform: none;
-    }
-
-    .post-card:hover .post-image img {
-        transform: none;
-    }
-
-    .read-more:hover {
-        transform: none;
+    .post-card,
+    .post-image img,
+    .read-more {
+        transform: none !important;
     }
 } 

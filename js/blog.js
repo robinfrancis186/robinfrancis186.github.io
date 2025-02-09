@@ -169,7 +169,11 @@ function openPost(postId) {
 
 // Handle image loading
 document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', () => {
-        img.classList.add('loaded');
-    });
+    if (img.complete) {
+        img.style.opacity = '1';
+    } else {
+        img.onload = () => {
+            img.style.opacity = '1';
+        };
+    }
 }); 
