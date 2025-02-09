@@ -282,29 +282,112 @@ section.fade-in {
     transform: translateY(0);
 }
 
-.card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--border-light);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Section specific styles */
-.about-content,
-.education-card,
-.skills-group,
+/* Base styles for cards */
+.glass-card,
+.blog-card,
 .project-card,
-.leadership,
-.achievements-list,
-.contact-form {
-    @extend .card;
+.contact-item,
+.achievement-card,
+.timeline-item,
+.skills-group {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect for all cards */
+.glass-card:hover,
+.blog-card:hover,
+.project-card:hover,
+.contact-item:hover,
+.achievement-card:hover,
+.timeline-item:hover,
+.skills-group:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass shine effect */
+.glass-card::after,
+.blog-card::after,
+.project-card::after,
+.contact-item::after,
+.achievement-card::after,
+.timeline-item::after,
+.skills-group::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.glass-card:hover::after,
+.blog-card:hover::after,
+.project-card:hover::after,
+.contact-item:hover::after,
+.achievement-card:hover::after,
+.timeline-item:hover::after,
+.skills-group:hover::after {
+    opacity: 1;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .glass-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .contact-item,
+[data-theme="dark"] .achievement-card,
+[data-theme="dark"] .timeline-item,
+[data-theme="dark"] .skills-group {
+    background: var(--card-bg);
+    border-color: var(--border-light);
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .glass-card,
+    .blog-card,
+    .project-card,
+    .contact-item,
+    .achievement-card,
+    .timeline-item,
+    .skills-group {
+        transition: none;
+    }
+
+    .glass-card:hover,
+    .blog-card:hover,
+    .project-card:hover,
+    .contact-item:hover,
+    .achievement-card:hover,
+    .timeline-item:hover,
+    .skills-group:hover {
+        transform: none;
+        box-shadow: var(--card-shadow);
+    }
+
+    .glass-card::after,
+    .blog-card::after,
+    .project-card::after,
+    .contact-item::after,
+    .achievement-card::after,
+    .timeline-item::after,
+    .skills-group::after {
+        display: none;
+    }
 }
 
 /* Form elements */
@@ -693,11 +776,11 @@ section h2::after {
     border-radius: 1rem;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--border-light);
-    transition: transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .skills-group:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .skills-group h3 {
@@ -773,11 +856,10 @@ section h2::after {
     background: var(--card-bg);
     border-radius: 0.5rem;
     border: 1px solid var(--border-light);
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .certifications li:hover {
-    transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -925,16 +1007,37 @@ section h2::after {
 
 /* Enhanced card hover effects */
 .glass-card {
+    position: relative;
+    overflow: hidden;
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
     border: 1px solid var(--border-light);
 }
 
 .glass-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glass-card:hover::after {
+    opacity: 1;
 }
 
 /* Button hover effects */
@@ -1056,11 +1159,11 @@ section h2::after {
     padding: 2rem;
     background: var(--bg-secondary);
     border-radius: 1rem;
-    transition: transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .highlight-item:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .highlight-item i {
@@ -1243,6 +1346,11 @@ section h2::after {
     border-radius: 1rem;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--border-light);
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact-item {
@@ -1468,19 +1576,17 @@ section h2::after {
 
 /* Project Cards with Parallax */
 .project-card {
-    transform-style: preserve-3d;
-    perspective: 1000px;
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 1.5rem;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
     position: relative;
     will-change: transform;
     margin-bottom: 1.5rem;
 }
 
 .project-card:hover {
-    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
