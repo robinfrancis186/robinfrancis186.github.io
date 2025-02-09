@@ -113,7 +113,9 @@ const modalImage = document.getElementById('gallery-image');
 const modalTitle = document.getElementById('gallery-title');
 const modalDate = document.getElementById('gallery-date');
 const modalDescription = document.getElementById('gallery-description');
-let currentPostIndex = 0;
+const modalContent = document.createElement('div');
+modalContent.className = 'modal-content';
+document.querySelector('.gallery-info').appendChild(modalContent);
 
 // Open modal
 document.addEventListener('click', (e) => {
@@ -130,6 +132,13 @@ document.addEventListener('click', (e) => {
 // Close modal
 document.querySelector('.close-modal').addEventListener('click', () => {
     modal.classList.remove('active');
+});
+
+// Close modal when clicking outside
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
 });
 
 // Navigation buttons
@@ -149,6 +158,7 @@ function openGalleryModal(index) {
     modalTitle.textContent = post.title;
     modalDate.textContent = formatDate(post.date);
     modalDescription.textContent = post.description;
+    modalContent.innerHTML = post.content;
     
     modal.classList.add('active');
 }
@@ -163,7 +173,9 @@ function navigateGallery(direction) {
 }
 
 // Initialize blog posts
-renderBlogPosts();
+document.addEventListener('DOMContentLoaded', () => {
+    renderBlogPosts();
+});
 
 // Function to add a new blog post
 function addBlogPost(post) {
