@@ -30,7 +30,7 @@
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -39,7 +39,6 @@
 .view-btn:hover, .view-btn.active {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     color: white;
-    transform: translateY(-2px);
 }
 
 /* Blog Grid */
@@ -60,16 +59,37 @@
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
     border: 1px solid var(--border-light);
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .blog-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.blog-card:hover::after {
+    opacity: 1;
 }
 
 .blog-image {
@@ -147,6 +167,7 @@
     background: var(--card-bg);
     border-radius: 1rem;
     overflow: hidden;
+    box-shadow: var(--card-shadow);
 }
 
 .gallery-content img {
@@ -457,4 +478,51 @@
 
 .blog-content-image:hover {
     transform: scale(1.02);
+}
+
+/* Project Cards */
+.project-card {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    will-change: transform;
+    margin-bottom: 1.5rem;
+}
+
+.project-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Items */
+.contact-item {
+    margin-bottom: 2rem;
+    text-align: left;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Achievement Cards */
+.achievement-card {
+    transition: box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline Items */
+.timeline-item {
+    transition: box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 } 

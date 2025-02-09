@@ -1,10 +1,10 @@
 // Blog posts data structure
-let blogPosts = [
+const blogPosts = [
     {
         id: 1,
         title: "SoulSync: Pioneering AI for Cognitive Wellness",
         date: "2024-02-09",
-        image: "images/blog/1720937570476.jpeg", // Team photo
+        image: "images/blog/1720937570476.jpeg",
         description: "Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.",
         content: `
             <div class="blog-images">
@@ -32,18 +32,13 @@ let blogPosts = [
                 <li>Vivek K J</li>
                 <li>Adwaith Jayasankar</li>
             </ul>
-            <p>Together, we combined expertise in AI, cognitive science, and user experience to bring SoulSync to life.</p>
 
             <h3>Acknowledgments</h3>
             <p>We extend our heartfelt gratitude to our mentors and supporters:</p>
             <p>Carl Francis, Roshini Varma, Srinivasan Muthuswamy, Anbumunee P., Latha Raj, Kamitha Jairaj, Sarika Nair, Utpalendra Kumar Deka, and Anil Antony</p>
             <p>Sahrdaya College of Engineering & Technology (SCET) for their unwavering support and encouragement.</p>
 
-            <h3>The Road Ahead</h3>
-            <p>This achievement fuels our commitment to advancing SoulSync and broadening its impact. We envision a future where AI redefines companionship and cognitive support, empowering individuals to lead enriched lives.</p>
-            <p>Stay tuned as we continue our journey of innovation!</p>
-
-            <p class="tags">#GenerativeAI #Innovation #Hackathon #TeamBitsNBytes #SoulSync #AIForGood #IBM</p>
+            <div class="tags">#GenerativeAI #Innovation #Hackathon #TeamBitsNBytes #SoulSync #AIForGood #IBM</div>
         `
     },
     {
@@ -52,7 +47,14 @@ let blogPosts = [
         date: "2024-02-07",
         image: "images/blog/1720937571684.jpeg",
         description: "An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.",
-        content: "Full blog post content about the Virtual Mouse project development and features..."
+        content: `
+            <div class="blog-images">
+                <img src="images/blog/1720937571684.jpeg" alt="Virtual Mouse Demo" class="blog-content-image">
+            </div>
+            <h2>Virtual Mouse: Redefining Computer Interaction</h2>
+            <p>Our latest update brings significant improvements to the Virtual Mouse project, making computer interaction more intuitive and accessible than ever.</p>
+            <div class="tags">#VirtualMouse #Innovation #ComputerVision #Accessibility</div>
+        `
     },
     {
         id: 3,
@@ -60,7 +62,14 @@ let blogPosts = [
         date: "2024-02-07",
         image: "images/blog/1720937573469.jpeg",
         description: "A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.",
-        content: "Full blog post content about the QuestionPro platform development..."
+        content: `
+            <div class="blog-images">
+                <img src="images/blog/1720937573469.jpeg" alt="QuestionPro Platform" class="blog-content-image">
+            </div>
+            <h2>QuestionPro: Revolutionizing Survey Management</h2>
+            <p>Experience the future of survey management with our enhanced QuestionPro platform, featuring advanced analytics and user-friendly interface.</p>
+            <div class="tags">#QuestionPro #SurveyPlatform #Analytics #UX</div>
+        `
     }
 ];
 
@@ -81,7 +90,7 @@ function createBlogCard(post) {
                 <p class="blog-date">${formatDate(post.date)}</p>
                 <h2 class="blog-title">${post.title}</h2>
                 <p class="blog-description">${post.description}</p>
-                <a href="#" class="blog-read-more" aria-label="Read more about ${post.title}">
+                <a href="#" class="blog-read-more">
                     Read More <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -93,7 +102,7 @@ function createBlogCard(post) {
 function renderBlogPosts() {
     const blogContainer = document.querySelector('.blog-posts');
     if (!blogContainer) return;
-
+    
     const blogHTML = blogPosts.map(post => createBlogCard(post)).join('');
     blogContainer.innerHTML = blogHTML;
 
@@ -110,96 +119,80 @@ function renderBlogPosts() {
     });
 }
 
-// Initialize blog posts when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderBlogPosts);
-} else {
+// Initialize blog posts
+document.addEventListener('DOMContentLoaded', () => {
     renderBlogPosts();
-}
+    initializeViewToggle();
+    initializeModalControls();
+});
 
 // View toggle functionality
-const viewButtons = document.querySelectorAll('.view-btn');
-const blogPostsContainer = document.querySelector('.blog-posts');
+function initializeViewToggle() {
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const blogPostsContainer = document.querySelector('.blog-posts');
 
-viewButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const view = button.dataset.view;
-        
-        // Update active button
-        viewButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        // Update view
-        if (view === 'gallery') {
-            blogPostsContainer.classList.add('gallery-view');
-        } else {
-            blogPostsContainer.classList.remove('gallery-view');
+    viewButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const view = button.dataset.view;
+            
+            // Update active button
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update view
+            blogPostsContainer.classList.toggle('gallery-view', view === 'gallery');
+        });
+    });
+}
+
+// Modal functionality
+function initializeModalControls() {
+    const modal = document.querySelector('.gallery-modal');
+    const closeBtn = document.querySelector('.close-modal');
+    const prevBtn = document.querySelector('.gallery-prev');
+    const nextBtn = document.querySelector('.gallery-next');
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
         }
     });
-});
 
-// Gallery modal functionality
-const modal = document.querySelector('.gallery-modal');
-const modalImage = document.getElementById('gallery-image');
-const modalTitle = document.getElementById('gallery-title');
-const modalDate = document.getElementById('gallery-date');
-const modalDescription = document.getElementById('gallery-description');
-const modalContent = document.createElement('div');
-modalContent.className = 'modal-content';
-document.querySelector('.gallery-info').appendChild(modalContent);
-
-// Open modal
-document.addEventListener('click', (e) => {
-    const blogCard = e.target.closest('.blog-card');
-    if (blogCard) {
-        const postId = parseInt(blogCard.dataset.id);
-        const postIndex = blogPosts.findIndex(post => post.id === postId);
-        if (postIndex !== -1) {
-            openGalleryModal(postIndex);
-        }
-    }
-});
-
-// Close modal
-document.querySelector('.close-modal').addEventListener('click', () => {
-    modal.classList.remove('active');
-});
-
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('active');
-    }
-});
-
-// Navigation buttons
-document.querySelector('.gallery-prev').addEventListener('click', () => {
-    navigateGallery('prev');
-});
-
-document.querySelector('.gallery-next').addEventListener('click', () => {
-    navigateGallery('next');
-});
+    prevBtn.addEventListener('click', () => navigateGallery('prev'));
+    nextBtn.addEventListener('click', () => navigateGallery('next'));
+}
 
 function openGalleryModal(index) {
     currentPostIndex = index;
     const post = blogPosts[index];
+    const modal = document.querySelector('.gallery-modal');
     
-    modalImage.src = post.image;
-    modalTitle.textContent = post.title;
-    modalDate.textContent = formatDate(post.date);
-    modalDescription.textContent = post.description;
+    document.getElementById('gallery-image').src = post.image;
+    document.getElementById('gallery-title').textContent = post.title;
+    document.getElementById('gallery-date').textContent = formatDate(post.date);
+    document.getElementById('gallery-description').textContent = post.description;
+    
+    const modalContent = document.querySelector('.gallery-info .modal-content') || 
+                        document.createElement('div');
+    modalContent.className = 'modal-content';
     modalContent.innerHTML = post.content;
+    
+    const galleryInfo = document.querySelector('.gallery-info');
+    if (!document.querySelector('.gallery-info .modal-content')) {
+        galleryInfo.appendChild(modalContent);
+    }
     
     modal.classList.add('active');
 }
 
 function navigateGallery(direction) {
-    if (direction === 'prev') {
-        currentPostIndex = (currentPostIndex - 1 + blogPosts.length) % blogPosts.length;
-    } else {
-        currentPostIndex = (currentPostIndex + 1) % blogPosts.length;
-    }
+    currentPostIndex = direction === 'prev'
+        ? (currentPostIndex - 1 + blogPosts.length) % blogPosts.length
+        : (currentPostIndex + 1) % blogPosts.length;
     openGalleryModal(currentPostIndex);
 }
 
