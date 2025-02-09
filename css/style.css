@@ -30,11 +30,12 @@
     --border-light: rgba(255, 255, 255, 0.1);
 }
 
-/* Reset and base styles */
+/* Base Resets and Defaults */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
     transform: none !important;
     transform-style: flat !important;
     perspective: none !important;
@@ -46,34 +47,14 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: auto;
 }
 
-/* Allow text selection for specific elements */
-p, h1, h2, h3, h4, h5, h6, li, span, a {
-    user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-}
-
-/* Prevent text selection for icons and buttons */
-i, button, .theme-toggle, .mobile-menu {
-    user-select: none !important;
-    -webkit-user-select: none !important;
-    -moz-user-select: none !important;
-    -ms-user-select: none !important;
-}
-
-/* Fix for mobile tap highlight */
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Fix for mobile touch behavior */
-@media (hover: none) {
-    * {
-        touch-action: manipulation;
-    }
+/* Global Scrolling Behavior */
+html {
+    scroll-behavior: auto;
 }
 
 body {
@@ -81,9 +62,96 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
+}
+
+/* Text Selection Rules */
+p, h1, h2, h3, h4, h5, h6, li, span, a {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Non-Selectable Elements */
+i, button, .theme-toggle, .mobile-menu {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Mobile Optimizations */
+@media (hover: none) {
+    * {
+        touch-action: manipulation;
+        transform: none !important;
+        perspective: none !important;
+        transform-style: flat !important;
+    }
+}
+
+/* Interactive Elements */
+button, 
+a, 
+input[type="submit"],
+.theme-toggle,
+.mobile-menu,
+.nav-links a {
+    cursor: pointer !important;
+}
+
+/* Remove Hover Effects */
+*:hover {
+    all: unset !important;
+    cursor: inherit;
+}
+
+/* Single Animation Definition */
+@keyframes noAnimation {
+    from, to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Apply No Animation to All Animated Elements */
+[class*="animate"],
+[class*="fade"],
+[class*="slide"],
+[class*="spin"] {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Clean up animations */
+@keyframes fadeIn {
+    from, to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes pulse {
+    from, to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slideIn {
+    from, to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes spin {
+    from, to {
+        transform: none;
+    }
 }
 
 /* Theme Toggle */
@@ -351,15 +419,6 @@ section.fade-in {
 [data-theme="dark"] .skills-group {
     background: var(--card-bg);
     border-color: var(--border-light);
-}
-
-/* Touch device optimizations */
-@media (hover: none) {
-    * {
-        transform: none !important;
-        perspective: none !important;
-        transform-style: flat !important;
-    }
 }
 
 /* Form elements */
@@ -1650,3 +1709,4 @@ body {
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
 }
+

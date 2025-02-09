@@ -27,34 +27,112 @@ const navLinks = document.querySelector('.nav-links');
 const mobileMenuIcon = mobileMenu.querySelector('i');
 const body = document.body;
 
-function toggleMobileMenu() {
-    const isOpen = navLinks.classList.contains('active');
+let isMenuOpen = false;
+
+function toggleMobileMenu(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
     
-    if (isOpen) {
-        navLinks.classList.remove('active');
-        mobileMenuIcon.classList.remove('fa-times');
-        mobileMenuIcon.classList.add('fa-bars');
-        body.style.overflow = '';
-    } else {
-        navLinks.classList.add('active');
-        mobileMenuIcon.classList.remove('fa-bars');
-        mobileMenuIcon.classList.add('fa-times');
-        body.style.overflow = 'hidden';
+    isMenuOpen = !isMenuOpen;
+    
+    navLinks.classList.toggle('active', isMenuOpen);
+    mobileMenuIcon.classList.toggle('fa-times', isMenuOpen);
+    mobileMenuIcon.classList.toggle('fa-bars', !isMenuOpen);
+    body.style.overflow = isMenuOpen ? 'hidden' : '';
+    
+    // Update ARIA attributes
+    mobileMenu.setAttribute('aria-expanded', isMenuOpen);
+    navLinks.setAttribute('aria-hidden', !isMenuOpen);
+    
+    // Trap focus within menu when open
+    if (isMenuOpen) {
+        trapFocus(navLinks);
     }
 }
 
-mobileMenu.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleMobileMenu();
-});
+// Set up mobile menu
+function initializeMobileMenu() {
+    // Add ARIA attributes
+    mobileMenu.setAttribute('role', 'button');
+    mobileMenu.setAttribute('aria-label', 'Toggle navigation menu');
+    mobileMenu.setAttribute('aria-controls', 'nav-links');
+    mobileMenu.setAttribute('aria-expanded', 'false');
+    
+    navLinks.setAttribute('role', 'navigation');
+    navLinks.setAttribute('aria-label', 'Main navigation');
+    navLinks.setAttribute('aria-hidden', 'true');
+    
+    // Add event listeners
+    mobileMenu.addEventListener('click', toggleMobileMenu);
+    
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
+            toggleMobileMenu();
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (isMenuOpen && 
+            !e.target.closest('.mobile-menu') && 
+            !e.target.closest('.nav-links')) {
+            toggleMobileMenu();
+        }
+    });
+    
+    // Prevent scroll on touch when menu is open
+    document.addEventListener('touchmove', (e) => {
+        if (isMenuOpen && !e.target.closest('.nav-links')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+}
 
-// Close mobile menu when clicking a link
+// Focus trap for accessibility
+function trapFocus(element) {
+    const focusableElements = element.querySelectorAll(
+        'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+    );
+    
+    if (focusableElements.length === 0) return;
+    
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+    
+    element.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                }
+            } else {
+                if (document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
+            }
+        }
+    });
+    
+    firstFocusable.focus();
+}
+
+// Initialize mobile menu
+initializeMobileMenu();
+
+// Handle navigation links
 navLinks.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
         e.preventDefault();
         const href = e.target.getAttribute('href');
-        toggleMobileMenu();
+        
+        if (isMenuOpen) {
+            toggleMobileMenu();
+        }
         
         if (href.startsWith('#')) {
             const target = document.querySelector(href);
@@ -62,32 +140,20 @@ navLinks.addEventListener('click', (e) => {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'auto'
                 });
+                
+                // Update URL without smooth scroll
+                history.pushState(null, '', href);
             }
         } else {
             window.location.href = href;
         }
     }
 });
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('active') && 
-        !e.target.closest('.mobile-menu') && 
-        !e.target.closest('.nav-links')) {
-        toggleMobileMenu();
-    }
-});
-
-// Prevent scroll when mobile menu is open
-document.addEventListener('touchmove', (e) => {
-    if (navLinks.classList.contains('active')) {
-        e.preventDefault();
-    }
-}, { passive: false });
 
 // Update active nav link based on scroll position
 function updateActiveNavLink() {
@@ -150,50 +216,75 @@ if (contactForm) {
         const messageInput = this.querySelector('#message');
         const submitButton = this.querySelector('button[type="submit"]');
         
+        // Clear previous messages
+        const existingMessages = document.querySelectorAll('.form-message');
+        existingMessages.forEach(msg => msg.remove());
+        
+        // Reset input states
+        [nameInput, emailInput, messageInput].forEach(input => {
+            input.classList.remove('error');
+        });
+        
+        // Validate inputs
+        let hasError = false;
+        
         if (!nameInput.value.trim()) {
             showFormMessage('Please enter your name', 'error');
+            nameInput.classList.add('error');
             nameInput.focus();
-            return;
+            hasError = true;
         }
 
         if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
             showFormMessage('Please enter a valid email address', 'error');
-            emailInput.focus();
-            return;
+            emailInput.classList.add('error');
+            if (!hasError) {
+                emailInput.focus();
+            }
+            hasError = true;
         }
 
         if (!messageInput.value.trim()) {
             showFormMessage('Please enter your message', 'error');
-            messageInput.focus();
-            return;
+            messageInput.classList.add('error');
+            if (!hasError) {
+                messageInput.focus();
+            }
+            hasError = true;
         }
 
+        if (hasError) return;
+
         submitButton.disabled = true;
-        submitButton.innerHTML = 'Sending...';
+        submitButton.textContent = 'Sending...';
 
         try {
             const formData = {
                 name: nameInput.value.trim(),
                 email: emailInput.value.trim(),
-                message: messageInput.value.trim()
+                message: messageInput.value.trim(),
+                timestamp: new Date().toISOString()
             };
 
-            await emailjs.send(
+            const response = await emailjs.send(
                 'service_rgqppvs',
                 'template_yddco1b',
                 formData,
                 'hBekDdvbPkt-p8Ka_'
             );
 
-            showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
-            contactForm.reset();
-            submitButton.innerHTML = 'Send Message';
-            submitButton.disabled = false;
+            if (response.status === 200) {
+                showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
 
         } catch (error) {
             console.error('Form submission error:', error);
-            showFormMessage('Failed to send message. Please try again.', 'error');
-            submitButton.innerHTML = 'Send Message';
+            showFormMessage('Failed to send message. Please try again later.', 'error');
+        } finally {
+            submitButton.textContent = 'Send Message';
             submitButton.disabled = false;
         }
     });
@@ -201,8 +292,8 @@ if (contactForm) {
 
 // Email validation helper
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email.trim());
 }
 
 // Form message display helper
@@ -216,10 +307,10 @@ function showFormMessage(message, type) {
         <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
         <span>${message}</span>
     `;
-
+    
     const form = document.getElementById('contact-form');
-    form.insertBefore(messageElement, form.firstChild);
-
+    form.insertAdjacentElement('afterbegin', messageElement);
+    
     if (type === 'success') {
         setTimeout(() => {
             messageElement.remove();
