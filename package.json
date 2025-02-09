@@ -8,5 +8,30 @@
     "framer-motion": "^12.4.1",
     "tailwind-merge": "^3.0.1",
     "typescript": "^5.7.3"
-  }
+  },
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinfrancis186/robinfrancis186.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/robinfrancis186/robinfrancis186.github.io/issues"
+  },
+  "homepage": "https://github.com/robinfrancis186/robinfrancis186.github.io#readme"
 }

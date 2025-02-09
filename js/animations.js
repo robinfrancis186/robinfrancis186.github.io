@@ -26,74 +26,52 @@ const names = [
     { text: 'روبین', language: 'Persian' }
 ];
 
-// Loading Animation
-let currentNameIndex = 0;
-const nameText = document.querySelector('.name-text');
-const progressBar = document.querySelector('.progress-bar');
-const progressText = document.querySelector('.progress-text');
+// Simple Loading Animation
 const loadingScreen = document.querySelector('.loading-screen');
-
-function animateLoadingName() {
-    if (currentNameIndex >= names.length) {
-        return;
-    }
-
-    const name = names[currentNameIndex];
-    nameText.textContent = `${name.text} (${name.language})`;
-
-    anime({
-        targets: '.name-text',
-        opacity: [0, 1],
-        translateY: [-20, 0],
-        duration: 800,
-        easing: 'easeOutExpo',
-        complete: () => {
-            setTimeout(() => {
-                anime({
-                    targets: '.name-text',
-                    opacity: 0,
-                    translateY: 20,
-                    duration: 800,
-                    easing: 'easeInExpo',
-                    complete: () => {
-                        currentNameIndex++;
-                        if (currentNameIndex < names.length) {
-                            animateLoadingName();
-                        }
-                    }
-                });
-            }, 1000);
-        }
-    });
-}
 
 // Initialize loading animation
 window.addEventListener('load', () => {
-    animateLoadingName();
-    
-    // Simulate loading progress
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += 1;
-        progressBar.style.width = `${progress}%`;
-        progressText.textContent = `${progress}%`;
-        
-        if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                anime({
-                    targets: '.loading-screen',
-                    opacity: 0,
-                    duration: 800,
-                    easing: 'easeInOutQuad',
-                    complete: () => {
-                        loadingScreen.style.display = 'none';
-                        initPageAnimations();
-                    }
-                });
-            }, 1000);
+    // Simple fade out loading screen
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 1000);
+});
+
+// Essential hover animations
+document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('mouseenter', (e) => {
+        e.target.style.transform = 'translateY(-3px)';
+    });
+
+    link.addEventListener('mouseleave', (e) => {
+        e.target.style.transform = 'translateY(0)';
+    });
+});
+
+// Simple scroll reveal
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '-50px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
-    }, 50);
+    });
+}, observerOptions);
+
+// Observe elements for simple fade in
+document.querySelectorAll('.mission-content, .about-content, .timeline-item, .project-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    scrollObserver.observe(el);
 });
 
 // Page Animations
@@ -184,27 +162,6 @@ function initPageAnimations() {
         scrollObserver.observe(el);
     });
 }
-
-// Hover animations
-document.querySelectorAll('.social-link').forEach(link => {
-    link.addEventListener('mouseenter', (e) => {
-        anime({
-            targets: e.target,
-            scale: 1.2,
-            duration: 400,
-            easing: 'easeOutElastic(1, .8)'
-        });
-    });
-
-    link.addEventListener('mouseleave', (e) => {
-        anime({
-            targets: e.target,
-            scale: 1,
-            duration: 400,
-            easing: 'easeOutElastic(1, .8)'
-        });
-    });
-});
 
 // Navigation hover effect
 document.querySelectorAll('.nav-links a').forEach(link => {

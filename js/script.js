@@ -139,116 +139,106 @@ document.querySelectorAll('section, .card').forEach((element) => {
     observer.observe(element);
 });
 
-// Form handling with enhanced validation
+// Contact Form Handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Remove any existing messages
-        clearFormMessages();
+        // Get form elements
+        const nameInput = this.querySelector('#name');
+        const emailInput = this.querySelector('#email');
+        const messageInput = this.querySelector('#message');
+        const submitButton = this.querySelector('button[type="submit"]');
         
-        // Get form data
-        const formData = new FormData(this);
-        const formObject = Object.fromEntries(formData);
-        
-        // Validate all fields
-        const validationErrors = validateForm(formObject);
-        
-        if (validationErrors.length > 0) {
-            validationErrors.forEach(error => {
-                showFormMessage(error, 'error');
-            });
+        // Validate inputs
+        if (!nameInput.value.trim()) {
+            showFormMessage('Please enter your name', 'error');
+            nameInput.focus();
             return;
         }
-        
+
+        if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+            showFormMessage('Please enter a valid email address', 'error');
+            emailInput.focus();
+            return;
+        }
+
+        if (!messageInput.value.trim()) {
+            showFormMessage('Please enter your message', 'error');
+            messageInput.focus();
+            return;
+        }
+
         // Show loading state
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.innerHTML;
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        
+
         try {
-            // Simulate server request (replace with actual API call)
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Prepare form data
+            const formData = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                message: messageInput.value.trim()
+            };
+
+            // Send email using EmailJS
+            await emailjs.send(
+                'service_rgqppvs', // Your EmailJS service ID
+                'template_yddco1b', // Your EmailJS template ID
+                formData,
+                'hBekDdvbPkt-p8Ka_'
+            );
+
+            // Show success message
+            showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
             
-            // Success
-            showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
-            this.reset();
+            // Reset form
+            contactForm.reset();
             
-            // Reset button after success
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Sent!';
-            setTimeout(() => {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            }, 2000);
-            
+            // Reset button
+            submitButton.innerHTML = 'Send Message';
+            submitButton.disabled = false;
+
         } catch (error) {
             console.error('Form submission error:', error);
-            showFormMessage('There was an error sending your message. Please try again.', 'error');
-            
-            // Reset button after error
+            showFormMessage('Failed to send message. Please try again.', 'error');
+            submitButton.innerHTML = 'Send Message';
             submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
         }
     });
 }
 
-// Form validation
-function validateForm(formData) {
-    const errors = [];
-    
-    // Name validation
-    if (!formData.name || formData.name.trim().length < 2) {
-        errors.push('Please enter a valid name (minimum 2 characters)');
-    }
-    
-    // Email validation
+// Email validation helper
+function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email || !emailRegex.test(formData.email)) {
-        errors.push('Please enter a valid email address');
-    }
-    
-    // Message validation
-    if (!formData.message || formData.message.trim().length < 10) {
-        errors.push('Please enter a message (minimum 10 characters)');
-    }
-    
-    return errors;
+    return emailRegex.test(email);
 }
 
-// Form message handling
+// Form message display helper
 function showFormMessage(message, type) {
-    const messageContainer = document.createElement('div');
-    messageContainer.className = `form-message ${type}`;
-    
-    const icon = document.createElement('i');
-    icon.className = type === 'success' 
-        ? 'fas fa-check-circle'
-        : 'fas fa-exclamation-circle';
-    
-    const textSpan = document.createElement('span');
-    textSpan.textContent = message;
-    
-    messageContainer.appendChild(icon);
-    messageContainer.appendChild(textSpan);
-    
+    // Remove any existing messages
+    const existingMessages = document.querySelectorAll('.form-message');
+    existingMessages.forEach(msg => msg.remove());
+
+    // Create new message element
+    const messageElement = document.createElement('div');
+    messageElement.className = `form-message ${type}`;
+    messageElement.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    // Insert message at the top of the form
     const form = document.getElementById('contact-form');
-    form.insertBefore(messageContainer, form.firstChild);
-    
+    form.insertBefore(messageElement, form.firstChild);
+
     // Auto-remove success messages after 5 seconds
     if (type === 'success') {
         setTimeout(() => {
-            messageContainer.remove();
+            messageElement.remove();
         }, 5000);
     }
-}
-
-// Clear all form messages
-function clearFormMessages() {
-    const form = document.getElementById('contact-form');
-    const messages = form.querySelectorAll('.form-message');
-    messages.forEach(message => message.remove());
 }
 
 // Skill bars animation
@@ -408,4 +398,99 @@ function animateMultilingualName() {
 document.addEventListener('DOMContentLoaded', () => {
     animateMultilingualName();
     // ... existing DOMContentLoaded code ...
+});
+
+// Navigation and Scroll Handling
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('.nav-links');
+    const sections = document.querySelectorAll('section[id]');
+
+    // Mobile menu toggle
+    mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !e.target.closest('.nav-links') && 
+            !e.target.closest('.mobile-menu')) {
+            nav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Scroll behavior
+    let lastScroll = 0;
+    const scrollThreshold = 100;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Add/remove scrolled class based on scroll position
+        if (currentScroll > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        // Update active link based on scroll position
+        updateActiveNavLink();
+
+        lastScroll = currentScroll;
+    });
+
+    // Update active navigation link based on scroll position
+    function updateActiveNavLink() {
+        const scrollPosition = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Smooth scroll for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const headerOffset = 80;
+                const targetPosition = targetSection.offsetTop - headerOffset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 }); 
