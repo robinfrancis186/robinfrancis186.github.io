@@ -2,6 +2,45 @@
 const blogPosts = [
     {
         id: 1,
+        title: "Making History: IEEE R10 Outstanding Volunteer Award",
+        date: "February 10, 2024",
+        category: "Achievement",
+        excerpt: "Honored to be the first student in history to receive the prestigious IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award, marking a milestone in leadership and innovation.",
+        content: `
+            <img src="images/blog/1731994207232.jpeg" alt="IEEE R10 Outstanding Volunteer Award">
+            
+            <h2>A Historic Recognition of Dedication & Leadership</h2>
+            <p>I am deeply honored to receive the IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award 🏆—a recognition that marks a historic milestone as the first student in history to receive this prestigious honor. This award reflects my journey of growth, leadership, and impact within the IEEE community.</p>
+
+            <h3>A Journey of Empowerment & Innovation</h3>
+            <p>As Chairman of IEEE Sahrdaya SB, I have been privileged to:</p>
+            <ul>
+                <li>Organize 116+ events engaging over 400+ members, fostering innovation, collaboration, and professional growth.</li>
+                <li>Drive membership growth, creating a thriving and engaged IEEE community.</li>
+                <li>Secure over $7,500 in funding and a $4,500 travel grant, empowering students with opportunities.</li>
+                <li>Conduct STEM outreach programs for pre-university students, inspiring young minds.</li>
+            </ul>
+
+            <h3>Gratitude & Acknowledgments</h3>
+            <p>This award is a testament to the incredible support from my mentors, peers, and the IEEE community. A special thanks to:</p>
+            <p>Shone Jose, Anil Antony, Krishnapriya K, Derick Davies, Hridaya Suresh, Devika T V, Vivek K J, and everyone who has believed in me.</p>
+            <p>IEEE India Council, IEEE Kerala Section, IEEE Computer Society, and IEEE Sahrdaya SB for their constant encouragement and support.</p>
+            <p>Above all, I express my heartfelt gratitude to God Almighty for His grace and guidance.</p>
+
+            <h3>Looking Forward</h3>
+            <p>This recognition fuels my passion to continue leading, learning, and making a difference. Together, let's drive innovation and build a brighter future through IEEE and technology! 🚀</p>
+
+            <div class="tags">
+                <span class="tag">#IEEE</span>
+                <span class="tag">#R10VolunteerAward</span>
+                <span class="tag">#Leadership</span>
+                <span class="tag">#Innovation</span>
+                <span class="tag">#Gratitude</span>
+            </div>
+        `
+    },
+    {
+        id: 2,
         title: "SoulSync: Pioneering AI for Cognitive Wellness",
         date: "February 9, 2024",
         category: "Achievement",
@@ -47,45 +86,6 @@ const blogPosts = [
                 <span class="tag">#SoulSync</span>
                 <span class="tag">#AIForGood</span>
                 <span class="tag">#IBM</span>
-            </div>
-        `
-    },
-    {
-        id: 2,
-        title: "Making History: IEEE R10 Outstanding Volunteer Award",
-        date: "February 7, 2024",
-        category: "Achievement",
-        excerpt: "A historic milestone as the first student to receive the prestigious IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award.",
-        content: `
-            <img src="images/blog/1720937571684.jpeg" alt="IEEE R10 Award Ceremony">
-            
-            <h2>A Historic Recognition of Dedication & Leadership</h2>
-            <p>I am deeply honored to receive the IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award 🏆—a recognition that marks a historic milestone as the first student in history to receive this prestigious honor. This award reflects my journey of growth, leadership, and impact within the IEEE community.</p>
-
-            <h3>A Journey of Empowerment & Innovation</h3>
-            <p>As Chairman of IEEE Sahrdaya SB, I have been privileged to:</p>
-            <ul>
-                <li>Organize 116+ events engaging over 400+ members, fostering innovation, collaboration, and professional growth</li>
-                <li>Drive membership growth, creating a thriving and engaged IEEE community</li>
-                <li>Secure over $7,500 in funding and a $4,500 travel grant, empowering students with opportunities</li>
-                <li>Conduct STEM outreach programs for pre-university students, inspiring young minds</li>
-            </ul>
-
-            <h3>Gratitude & Acknowledgments</h3>
-            <p>This award is a testament to the incredible support from my mentors, peers, and the IEEE community. A special thanks to:</p>
-            <p>Shone Jose, Anil Antony, Krishnapriya K, Derick Davies, Hridaya Suresh, Devika T V, Vivek K J, and everyone who has believed in me.</p>
-            <p>IEEE India Council, IEEE Kerala Section, IEEE Computer Society, and IEEE Sahrdaya SB for their constant encouragement and support.</p>
-            <p>Above all, I express my heartfelt gratitude to God Almighty for His grace and guidance.</p>
-
-            <h3>Looking Forward</h3>
-            <p>This recognition fuels my passion to continue leading, learning, and making a difference. Together, let's drive innovation and build a brighter future through IEEE and technology! 🚀</p>
-
-            <div class="tags">
-                <span class="tag">#IEEE</span>
-                <span class="tag">#R10VolunteerAward</span>
-                <span class="tag">#Leadership</span>
-                <span class="tag">#Innovation</span>
-                <span class="tag">#Gratitude</span>
             </div>
         `
     }
