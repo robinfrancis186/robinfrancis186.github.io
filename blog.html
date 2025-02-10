@@ -2,9 +2,23 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Robin Francis - Blog posts about technology, development, and achievements">
     <title>Robin Francis - Blog</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net fonts.googleapis.com fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' https: data: blob:; font-src 'self' https: data: fonts.gstatic.com; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: cdn.jsdelivr.net;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
@@ -14,6 +28,12 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="images/favicon.png">
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -28,13 +48,13 @@
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#mission">Mission</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#resume">Resume</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="./index.html#home">Home</a></li>
+                <li><a href="./index.html#mission">Mission</a></li>
+                <li><a href="./index.html#about">About</a></li>
+                <li><a href="./index.html#resume">Resume</a></li>
+                <li><a href="./index.html#projects">Projects</a></li>
+                <li><a href="./blog.html" class="active">Blog</a></li>
+                <li><a href="./index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
