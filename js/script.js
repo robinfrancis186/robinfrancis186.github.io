@@ -142,6 +142,19 @@ document.querySelectorAll('section, .card').forEach((element) => {
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
+    // Reset form styles on input
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            input.style.borderColor = '';
+            input.classList.remove('error');
+            const errorMessage = input.parentElement.querySelector('.input-error');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        });
+    });
+
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -151,43 +164,70 @@ if (contactForm) {
         const messageInput = this.querySelector('#message');
         const submitButton = this.querySelector('button[type="submit"]');
         
-        // Validate inputs
+        // Reset previous error states
+        inputs.forEach(input => {
+            input.style.borderColor = '';
+            input.classList.remove('error');
+        });
+
+        // Enhanced validation with visual feedback
+        let hasErrors = false;
+
+        // Name validation
         if (!nameInput.value.trim()) {
-            showFormMessage('Please enter your name', 'error');
+            showInputError(nameInput, 'Please enter your name');
             nameInput.focus();
-            return;
+            hasErrors = true;
         }
 
-        if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
-            showFormMessage('Please enter a valid email address', 'error');
-            emailInput.focus();
-            return;
+        // Email validation with enhanced regex
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+            showInputError(emailInput, 'Please enter a valid email address');
+            if (!hasErrors) {
+                emailInput.focus();
+                hasErrors = true;
+            }
         }
 
+        // Message validation
         if (!messageInput.value.trim()) {
-            showFormMessage('Please enter your message', 'error');
-            messageInput.focus();
-            return;
+            showInputError(messageInput, 'Please enter your message');
+            if (!hasErrors) {
+                messageInput.focus();
+                hasErrors = true;
+            }
         }
 
-        // Show loading state
+        if (hasErrors) return;
+
+        // Show loading state with enhanced animation
         submitButton.disabled = true;
+        submitButton.classList.add('loading');
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
         try {
             // Send email using EmailJS
             const response = await emailjs.sendForm(
-                'service_e5srsha', // Service ID
-                'template_yddco1b', // Template ID
+                'service_e5srsha',
+                'template_yddco1b',
                 contactForm,
-                'hBekDdvbPkt-p8Ka_' // Public Key
+                'hBekDdvbPkt-p8Ka_'
             );
 
             if (response.status === 200) {
-                // Show success message
                 showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
-                // Reset form
                 contactForm.reset();
+                
+                // Add success animation to button
+                submitButton.classList.add('success');
+                submitButton.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                
+                // Reset button state after delay
+                setTimeout(() => {
+                    submitButton.classList.remove('success');
+                    submitButton.innerHTML = 'Send Message';
+                }, 2000);
             } else {
                 throw new Error('Failed to send message');
             }
@@ -195,21 +235,25 @@ if (contactForm) {
         } catch (error) {
             console.error('Form submission error:', error);
             showFormMessage('Failed to send message. Please try again or contact directly via email.', 'error');
+            submitButton.classList.add('error');
         } finally {
-            // Reset button state
-            submitButton.innerHTML = 'Send Message';
             submitButton.disabled = false;
+            submitButton.classList.remove('loading');
+            if (!submitButton.classList.contains('success')) {
+                submitButton.innerHTML = 'Send Message';
+            }
         }
     });
 }
 
-// Form message display helper
+// Enhanced form message display
 function showFormMessage(message, type) {
-    // Remove any existing messages
     const existingMessages = document.querySelectorAll('.form-message');
-    existingMessages.forEach(msg => msg.remove());
+    existingMessages.forEach(msg => {
+        msg.classList.add('fade-out');
+        setTimeout(() => msg.remove(), 300);
+    });
 
-    // Create new message element
     const messageElement = document.createElement('div');
     messageElement.className = `form-message ${type}`;
     messageElement.innerHTML = `
@@ -217,21 +261,45 @@ function showFormMessage(message, type) {
         <span>${message}</span>
     `;
 
-    // Insert message before the form
     const form = document.getElementById('contact-form');
     form.insertBefore(messageElement, form.firstChild);
 
-    // Auto-remove success messages after 5 seconds
+    // Animate message in
+    setTimeout(() => messageElement.classList.add('show'), 10);
+
     if (type === 'success') {
         setTimeout(() => {
-            messageElement.remove();
+            messageElement.classList.add('fade-out');
+            setTimeout(() => messageElement.remove(), 300);
         }, 5000);
     }
 }
 
-// Email validation helper
+// New function to show input-specific errors
+function showInputError(input, message) {
+    input.style.borderColor = '#ef4444';
+    input.classList.add('error');
+    
+    // Remove existing error message if any
+    const existingError = input.parentElement.querySelector('.input-error');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Create and add new error message
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'input-error';
+    errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+    input.parentElement.appendChild(errorMessage);
+
+    // Smooth scroll to error
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// Enhanced email validation
 function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
 }
 
 // Initialize EmailJS
