@@ -177,19 +177,18 @@ if (contactForm) {
         try {
             // Prepare form data
             const templateParams = {
-                from_name: nameInput.value.trim(),
-                from_email: emailInput.value.trim(),
+                user_name: nameInput.value.trim(),
+                user_email: emailInput.value.trim(),
                 message: messageInput.value.trim(),
-                to_name: 'Robin Francis',
-                reply_to: emailInput.value.trim()
+                to_name: 'Robin Francis'
             };
 
             // Send email using EmailJS
-            const response = await emailjs.send(
-                'service_rgqppvs',
-                'template_yddco1b',
-                templateParams,
-                'hBekDdvbPkt-p8Ka_'
+            const response = await emailjs.sendForm(
+                'service_rgqppvs', // Service ID
+                'template_yddco1b', // Template ID
+                contactForm,
+                'hBekDdvbPkt-p8Ka_' // Public Key
             );
 
             if (response.status === 200) {
