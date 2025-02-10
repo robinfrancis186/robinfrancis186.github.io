@@ -175,17 +175,9 @@ if (contactForm) {
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
         try {
-            // Prepare form data
-            const templateParams = {
-                user_name: nameInput.value.trim(),
-                user_email: emailInput.value.trim(),
-                message: messageInput.value.trim(),
-                to_name: 'Robin Francis'
-            };
-
             // Send email using EmailJS
             const response = await emailjs.sendForm(
-                'service_rgqppvs', // Service ID
+                'service_e5srsha', // Service ID
                 'template_yddco1b', // Template ID
                 contactForm,
                 'hBekDdvbPkt-p8Ka_' // Public Key
