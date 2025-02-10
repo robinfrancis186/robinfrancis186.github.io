@@ -176,43 +176,40 @@ if (contactForm) {
 
         try {
             // Prepare form data
-            const formData = {
-                name: nameInput.value.trim(),
-                email: emailInput.value.trim(),
-                message: messageInput.value.trim()
+            const templateParams = {
+                from_name: nameInput.value.trim(),
+                from_email: emailInput.value.trim(),
+                message: messageInput.value.trim(),
+                to_name: 'Robin Francis',
+                reply_to: emailInput.value.trim()
             };
 
             // Send email using EmailJS
-            await emailjs.send(
-                'service_rgqppvs', // Your EmailJS service ID
-                'template_yddco1b', // Your EmailJS template ID
-                formData,
+            const response = await emailjs.send(
+                'service_rgqppvs',
+                'template_yddco1b',
+                templateParams,
                 'hBekDdvbPkt-p8Ka_'
             );
 
-            // Show success message
-            showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
+            if (response.status === 200) {
+                // Show success message
+                showFormMessage('Message sent successfully! I will get back to you soon.', 'success');
+                // Reset form
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
             
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button
-            submitButton.innerHTML = 'Send Message';
-            submitButton.disabled = false;
-
         } catch (error) {
             console.error('Form submission error:', error);
-            showFormMessage('Failed to send message. Please try again.', 'error');
+            showFormMessage('Failed to send message. Please try again or contact directly via email.', 'error');
+        } finally {
+            // Reset button state
             submitButton.innerHTML = 'Send Message';
             submitButton.disabled = false;
         }
     });
-}
-
-// Email validation helper
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
 }
 
 // Form message display helper
@@ -229,7 +226,7 @@ function showFormMessage(message, type) {
         <span>${message}</span>
     `;
 
-    // Insert message at the top of the form
+    // Insert message before the form
     const form = document.getElementById('contact-form');
     form.insertBefore(messageElement, form.firstChild);
 
@@ -240,6 +237,16 @@ function showFormMessage(message, type) {
         }, 5000);
     }
 }
+
+// Email validation helper
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Initialize EmailJS
+(function() {
+    emailjs.init("hBekDdvbPkt-p8Ka_");
+})();
 
 // Skill bars animation
 function animateSkills(container) {
