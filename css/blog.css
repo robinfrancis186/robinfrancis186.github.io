@@ -13,11 +13,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    animation: float 5s ease-in-out infinite;
+    opacity: 1;
 }
 
 .blog-header .subtitle {
@@ -25,8 +21,7 @@
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    opacity: 1;
 }
 
 /* Featured Post */
@@ -43,8 +38,7 @@
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
+    opacity: 1;
 }
 
 /* Blog Grid */
@@ -66,16 +60,7 @@
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: 1rem;
-    opacity: 0;
-    animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.post-card:hover {
-    animation: float 3s ease-in-out infinite;
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.2) !important;
+    opacity: 1;
 }
 
 .post-image {
@@ -88,7 +73,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    opacity: 1;
 }
 
 .post-content {
@@ -137,30 +122,6 @@
     border-radius: 0.5rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    position: relative;
-    overflow: hidden;
-}
-
-.read-more::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.read-more:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-}
-
-.read-more:hover::after {
-    transform: translateX(100%);
 }
 
 /* Modal */
@@ -185,14 +146,8 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(0);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.post-modal.active .modal-overlay {
-    opacity: 1;
     backdrop-filter: blur(8px);
+    opacity: 1;
 }
 
 .modal-container {
@@ -208,17 +163,7 @@
     box-shadow: var(--glass-shadow);
     border-radius: 1rem;
     overflow-y: auto;
-    animation: popIn 0.3s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.post-modal.active .modal-container {
     opacity: 1;
-    transform: translateY(0) scale(1);
 }
 
 .close-modal {
@@ -239,15 +184,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.close-modal:hover {
-    transform: rotate(90deg) translateZ(10px) !important;
-    background: var(--accent-primary) !important;
-    color: white !important;
 }
 
 .modal-content {
@@ -260,6 +196,7 @@
     object-fit: cover;
     border-radius: 0.5rem;
     margin-bottom: 2rem;
+    opacity: 1;
 }
 
 .modal-content h2 {
@@ -297,22 +234,6 @@
     color: var(--accent-primary);
     border-radius: 2rem;
     font-size: 0.9rem;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
-    position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.tag:hover {
-    transform: translateY(-2px) translateZ(10px) rotateX(2deg) !important;
-    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.2) !important;
-    background: var(--accent-primary) !important;
-    color: white !important;
-}
-
-.tag:active {
-    transform: translateY(0) !important;
 }
 
 /* Responsive Design */
@@ -396,15 +317,6 @@
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .posts-grid .post-card:nth-child(2) {
     animation-delay: 0.2s;
 }
@@ -419,33 +331,65 @@
 }
 
 .post-image img {
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: none !important;
 }
 
 .post-card:hover .post-image img {
-    transform: scale(1.05) !important;
+    transform: none !important;
 }
 
-/* 3D Animation Keyframes */
-@keyframes float {
-    0% {
-        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+/* Remove transform and transition properties */
+.post-card,
+.modal-container,
+.close-modal,
+.read-more,
+.tag {
+    transform: none !important;
+    transition: none !important;
+    transform-style: unset;
+    perspective: none;
+}
+
+/* Remove hover effects */
+.post-card:hover,
+.read-more:hover,
+.tag:hover,
+.close-modal:hover {
+    transform: none !important;
+    box-shadow: var(--glass-shadow);
+}
+
+/* Simplify animations to only use opacity */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-    50% {
-        transform: translateY(-5px) translateZ(20px) rotateX(2deg) rotateY(-2deg);
-    }
-    100% {
-        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    to {
+        opacity: 1;
     }
 }
 
 @keyframes modalFloat {
     from {
-        transform: translateY(20px) translateZ(-50px) rotateX(5deg);
         opacity: 0;
     }
     to {
-        transform: translateY(0) translateZ(0) rotateX(0);
         opacity: 1;
     }
+}
+
+/* Remove float animation */
+@keyframes float {
+    0%, 50%, 100% {
+        transform: none;
+    }
+}
+
+/* Update image transitions */
+.post-image img {
+    transition: none !important;
+}
+
+.post-card:hover .post-image img {
+    transform: none !important;
 } 

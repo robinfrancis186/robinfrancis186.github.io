@@ -41,9 +41,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 
 body {
@@ -170,18 +168,34 @@ nav {
     padding: 2rem;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-.hero-title {
+.hero-title.multilingual-name {
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     letter-spacing: -2px;
     margin-bottom: 1.5rem;
+    line-height: 1.1;
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.1;
+    opacity: 1;
+    display: inline-block;
+}
+
+/* Optimized animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-subtitle {
@@ -228,44 +242,36 @@ section {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
     }
 }
 
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
     }
 }
 
 @keyframes scaleIn {
     from {
         opacity: 0;
-        transform: scale(0.98);
     }
     to {
         opacity: 1;
-        transform: scale(1);
     }
 }
 
@@ -773,9 +779,18 @@ button {
 .btn,
 .theme-toggle,
 .social-link {
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: all 0.3s ease !important;
     position: relative;
     overflow: hidden;
+}
+
+.read-more:hover,
+.download-btn:hover,
+.btn:hover,
+.theme-toggle:hover,
+.social-link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .read-more:active,
@@ -793,11 +808,11 @@ button {
 
 /* Form Submit Button Animation */
 .contact-form button {
-    transition: transform 0.2s ease-out !important;
+    transition: none !important;
 }
 
 .contact-form button:active {
-    transform: scale(0.95) !important;
+    transform: none !important;
 }
 
 /* Navigation Links Animation */
@@ -814,7 +829,7 @@ button {
     width: 0;
     height: 2px;
     background: var(--accent-primary);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: width 0.3s ease, left 0.3s ease !important;
     transform: translateX(-50%);
 }
 
@@ -825,32 +840,35 @@ button {
 /* Section Animations */
 section {
     opacity: 0;
-    animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
 }
 
-section:nth-child(even) {
-    animation-delay: 0.2s;
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Hero Section Animations */
-.hero-title {
+.hero-title,
+.hero-subtitle,
+.hero-description,
+.social-links {
     opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .hero-subtitle {
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    animation-delay: 0.2s;
 }
 
 .hero-description {
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    animation-delay: 0.4s;
 }
 
 .social-links {
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+    animation-delay: 0.6s;
 }
 
 /* Card Animations */
@@ -861,8 +879,7 @@ section:nth-child(even) {
 .achievement-card,
 .timeline-item,
 .skills-group {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: all 0.3s ease !important;
 }
 
 .glass-card:hover,
@@ -870,37 +887,25 @@ section:nth-child(even) {
 .contact-item:hover,
 .achievement-card:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Timeline Animations */
-.timeline-item {
-    opacity: 0;
-    animation: fadeInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.timeline-item:nth-child(odd) {
-    animation: fadeInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Input Animations */
 .form-group input,
 .form-group textarea {
-    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--accent-primary) !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
-    transform: translateY(-1px) !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
 }
 
 /* Loading Animation for Images */
 img {
     opacity: 0;
-    transition: opacity 0.5s ease-out !important;
+    transition: opacity 0.5s ease !important;
 }
 
 img.loaded {
@@ -909,14 +914,8 @@ img.loaded {
 
 /* 3D Animation Keyframes */
 @keyframes float {
-    0% {
-        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
-    }
-    50% {
-        transform: translateY(-5px) translateZ(20px) rotateX(2deg) rotateY(-2deg);
-    }
-    100% {
-        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    0%, 50%, 100% {
+        transform: none;
     }
 }
 
@@ -925,18 +924,17 @@ img.loaded {
 .project-card,
 .contact-item,
 .achievement-card {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform-style: unset;
+    perspective: none;
+    transition: none !important;
 }
 
 .glass-card:hover,
 .project-card:hover,
 .contact-item:hover,
 .achievement-card:hover {
-    animation: float 3s ease-in-out infinite;
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.2) !important;
+    animation: none;
+    box-shadow: var(--glass-shadow);
 }
 
 /* Interactive Elements 3D */
@@ -945,9 +943,9 @@ img.loaded {
 .social-link,
 .read-more,
 .download-btn {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform-style: unset;
+    perspective: none;
+    transition: none !important;
 }
 
 .btn:hover,
@@ -955,24 +953,24 @@ img.loaded {
 .social-link:hover,
 .read-more:hover,
 .download-btn:hover {
-    transform: translateY(-2px) translateZ(20px) rotateX(2deg) !important;
-    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2) !important;
+    transform: none !important;
+    box-shadow: var(--glass-shadow);
 }
 
 /* Timeline Item 3D */
 .timeline-item {
-    transform-style: preserve-3d;
-    perspective: 1000px;
+    transform-style: unset;
+    perspective: none;
 }
 
 .timeline-item::before {
-    transform: translateZ(10px);
+    transform: none;
 }
 
 /* Section Headers 3D */
 section h2 {
-    transform-style: preserve-3d;
-    perspective: 1000px;
+    transform-style: unset;
+    perspective: none;
     position: relative;
 }
 
@@ -990,7 +988,58 @@ section h2::after {
 
 /* Hero Title 3D */
 .hero-title {
-    transform-style: preserve-3d;
+    transform-style: unset;
+    perspective: none;
+    animation: none;
+}
+
+/* Page Transition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Mobile Menu Animation */
+.nav-links {
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.mobile-menu {
+    transition: transform 0.3s ease !important;
+}
+
+.mobile-menu.active {
+    transform: rotate(90deg);
+}
+
+/* Improved performance classes */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.optimize-animation {
+    backface-visibility: hidden;
     perspective: 1000px;
-    animation: float 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .hero-title.multilingual-name,
+    .pixel,
+    .hero-content {
+        animation: none;
+        transition: none;
+    }
 }

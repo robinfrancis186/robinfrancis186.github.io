@@ -52,57 +52,40 @@ const blogPosts = [
     },
     {
         id: 2,
-        title: "Virtual Mouse Project Update",
-        date: "February 7, 2024",
-        category: "Project",
-        excerpt: "An innovative virtual mouse application that combines hand gesture recognition with voice control for a hands-free computer interface.",
+        title: "Making History: IEEE R10 Outstanding Volunteer Award",
+        date: "February 15, 2024",
+        category: "Achievement",
+        excerpt: "A historic milestone as the first student to receive the prestigious IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award.",
         content: `
-            <img src="images/blog/1720937571684.jpeg" alt="Virtual Mouse Demo">
+            <img src="images/blog/1731994207232.jpeg" alt="IEEE R10 Outstanding Volunteer Award">
             
-            <h2>Virtual Mouse: Redefining Computer Interaction</h2>
-            <p>Our latest update brings significant improvements to the Virtual Mouse project, making computer interaction more intuitive and accessible than ever.</p>
+            <h2>A Historic Recognition of Dedication & Leadership</h2>
+            <p>I am deeply honored to receive the IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award 🏆—a recognition that marks a historic milestone as the first student in history to receive this prestigious honor. This award reflects my journey of growth, leadership, and impact within the IEEE community.</p>
 
-            <h3>Key Features</h3>
+            <h3>A Journey of Empowerment & Innovation</h3>
+            <p>As Chairman of IEEE Sahrdaya SB, I have been privileged to:</p>
             <ul>
-                <li>Real-time hand gesture recognition</li>
-                <li>Voice command integration</li>
-                <li>Customizable gesture mappings</li>
-                <li>Accessibility-first design</li>
+                <li>Organize 116+ events engaging over 400+ members, fostering innovation, collaboration, and professional growth</li>
+                <li>Drive membership growth, creating a thriving and engaged IEEE community</li>
+                <li>Secure over $7,500 in funding and a $4,500 travel grant, empowering students with opportunities</li>
+                <li>Conduct STEM outreach programs for pre-university students, inspiring young minds</li>
             </ul>
 
+            <h3>Gratitude & Acknowledgments</h3>
+            <p>This award is a testament to the incredible support from my mentors, peers, and the IEEE community. A special thanks to:</p>
+            <p>Shone Jose, Anil Antony, Krishnapriya K, Derick Davies, Hridaya Suresh, Devika T V, Vivek K J, and everyone who has believed in me.</p>
+            <p>IEEE India Council, IEEE Kerala Section, IEEE Computer Society, and IEEE Sahrdaya SB for their constant encouragement and support.</p>
+            <p>Above all, I express my heartfelt gratitude to God Almighty for His grace and guidance.</p>
+
+            <h3>Looking Forward</h3>
+            <p>This recognition fuels my passion to continue leading, learning, and making a difference. Together, let's drive innovation and build a brighter future through IEEE and technology! 🚀</p>
+
             <div class="tags">
-                <span class="tag">#VirtualMouse</span>
+                <span class="tag">#IEEE</span>
+                <span class="tag">#R10VolunteerAward</span>
+                <span class="tag">#Leadership</span>
                 <span class="tag">#Innovation</span>
-                <span class="tag">#ComputerVision</span>
-                <span class="tag">#Accessibility</span>
-            </div>
-        `
-    },
-    {
-        id: 3,
-        title: "QuestionPro Development",
-        date: "February 7, 2024",
-        category: "Development",
-        excerpt: "A comprehensive survey platform designed to simplify online survey creation and analysis with advanced features and analytics.",
-        content: `
-            <img src="images/blog/1720937573469.jpeg" alt="QuestionPro Platform">
-            
-            <h2>QuestionPro: Revolutionizing Survey Management</h2>
-            <p>Experience the future of survey management with our enhanced QuestionPro platform, featuring advanced analytics and user-friendly interface.</p>
-
-            <h3>Platform Highlights</h3>
-            <ul>
-                <li>Intuitive survey builder</li>
-                <li>Real-time analytics dashboard</li>
-                <li>Advanced response visualization</li>
-                <li>Multi-platform compatibility</li>
-            </ul>
-
-            <div class="tags">
-                <span class="tag">#QuestionPro</span>
-                <span class="tag">#SurveyPlatform</span>
-                <span class="tag">#Analytics</span>
-                <span class="tag">#UX</span>
+                <span class="tag">#Gratitude</span>
             </div>
         `
     }

@@ -479,4 +479,176 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial update of active link
     updateActiveNavLink();
+});
+
+// Section Animation Observer
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '-50px'
+});
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Page Transition
+document.addEventListener('DOMContentLoaded', () => {
+    // Add loaded class to all images that are already loaded
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+        }
+    });
+});
+
+// Smooth scroll with header offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Pixel Transition Effect
+class PixelTransition {
+    constructor(element, options = {}) {
+        this.element = element;
+        this.options = {
+            gridCols: options.gridCols || 20,
+            gridRows: options.gridRows || 10,
+            duration: options.duration || 800,
+            delay: options.delay || 20,
+            ...options
+        };
+        this.init();
+    }
+
+    init() {
+        // Create pixel transition container
+        this.container = document.createElement('div');
+        this.container.className = 'pixel-transition gpu-accelerated';
+        this.element.parentNode.insertBefore(this.container, this.element);
+        this.container.appendChild(this.element);
+
+        // Create pixel grid
+        this.grid = document.createElement('div');
+        this.grid.className = 'pixel-grid';
+        this.grid.style.setProperty('--grid-cols', this.options.gridCols);
+        this.grid.style.setProperty('--grid-rows', this.options.gridRows);
+        this.container.appendChild(this.grid);
+
+        // Create pixels
+        this.createPixels();
+    }
+
+    createPixels() {
+        const totalPixels = this.options.gridCols * this.options.gridRows;
+        const shuffledIndices = Array.from({length: totalPixels}, (_, i) => i)
+            .sort(() => Math.random() - 0.5);
+
+        for (let i = 0; i < totalPixels; i++) {
+            const pixel = document.createElement('div');
+            pixel.className = 'pixel optimize-animation';
+            this.grid.appendChild(pixel);
+
+            // Animate pixels with random delay
+            setTimeout(() => {
+                pixel.style.transform = 'scale(1)';
+                setTimeout(() => {
+                    pixel.style.transform = 'scale(0)';
+                }, this.options.duration);
+            }, shuffledIndices[i] * this.options.delay);
+        }
+    }
+
+    animate() {
+        // Clear existing pixels
+        this.grid.innerHTML = '';
+        // Create new animation
+        this.createPixels();
+    }
+}
+
+// Initialize pixel transition
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero-title.multilingual-name');
+    if (heroTitle) {
+        const transition = new PixelTransition(heroTitle, {
+            gridCols: 25,
+            gridRows: 15,
+            duration: 1000,
+            delay: 15
+        });
+
+        // Animate on hover
+        heroTitle.addEventListener('mouseenter', () => {
+            transition.animate();
+        });
+    }
+
+    // Optimize performance for animations
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        element.classList.add('gpu-accelerated');
+    });
+});
+
+// Optimize scroll performance
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (!scrollTimeout) {
+        requestAnimationFrame(() => {
+            updateActiveNavLink();
+            scrollTimeout = null;
+        });
+        scrollTimeout = true;
+    }
+}, { passive: true });
+
+// Optimize image loading
+const lazyLoadImages = () => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+};
+
+// Initialize optimizations
+document.addEventListener('DOMContentLoaded', () => {
+    lazyLoadImages();
+    
+    // Add performance optimization classes
+    document.querySelectorAll('.hero-section, .post-card, .glass-card').forEach(element => {
+        element.classList.add('gpu-accelerated', 'optimize-animation');
+    });
 }); 
