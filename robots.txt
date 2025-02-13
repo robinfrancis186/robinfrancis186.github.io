@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
+Allow: /blog.html
+Allow: /images/
+Allow: /css/
+Allow: /js/
 
-Sitemap: https://robinfrancis186.github.io/sitemap.xml 
+# Sitemaps
+Sitemap: https://robinfrancis186.github.io/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Host
+Host: https://robinfrancis186.github.io 
