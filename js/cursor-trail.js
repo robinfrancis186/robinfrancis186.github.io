@@ -22,6 +22,9 @@ class CursorTrailEffect {
         this.speed = 0.2;
         this.lastScrollY = window.scrollY;
 
+        // Initialize particle colors
+        this.updateParticleColors();
+
         // Add event listeners
         this.init();
         this.render();
@@ -61,38 +64,25 @@ class CursorTrailEffect {
 
     updateParticleColors() {
         const isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
-        const gradientStart = getComputedStyle(document.documentElement).getPropertyValue('--gradient-start').trim();
-        const gradientEnd = getComputedStyle(document.documentElement).getPropertyValue('--gradient-end').trim();
+        
+        // Default colors if CSS variables are not available
+        const defaultLight = { r: 37, g: 99, b: 235 }; // #2563eb
+        const defaultDark = { r: 96, g: 165, b: 250 }; // #60a5fa
+        
+        const startColor = isDarkTheme ? defaultDark : defaultLight;
+        const endColor = isDarkTheme ? defaultLight : defaultDark;
         
         this.particles.forEach((particle, index) => {
             const progress = index / this.numParticles;
-            const color = this.interpolateColors(gradientStart, gradientEnd, progress);
-            particle.style.backgroundColor = color;
+            const r = Math.round(startColor.r + (endColor.r - startColor.r) * progress);
+            const g = Math.round(startColor.g + (endColor.g - startColor.g) * progress);
+            const b = Math.round(startColor.b + (endColor.b - startColor.b) * progress);
+            
+            particle.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             particle.style.opacity = isDarkTheme ? '0.3' : '0.2';
+            particle.style.width = `${8 - (index * 0.2)}px`;
+            particle.style.height = `${8 - (index * 0.2)}px`;
         });
-    }
-
-    interpolateColors(color1, color2, factor) {
-        if (color1.startsWith('#')) {
-            color1 = color1.substring(1);
-        }
-        if (color2.startsWith('#')) {
-            color2 = color2.substring(1);
-        }
-        
-        const r1 = parseInt(color1.substring(0, 2), 16);
-        const g1 = parseInt(color1.substring(2, 4), 16);
-        const b1 = parseInt(color1.substring(4, 6), 16);
-        
-        const r2 = parseInt(color2.substring(0, 2), 16);
-        const g2 = parseInt(color2.substring(2, 4), 16);
-        const b2 = parseInt(color2.substring(4, 6), 16);
-        
-        const r = Math.round(r1 + (r2 - r1) * factor);
-        const g = Math.round(g1 + (g2 - g1) * factor);
-        const b = Math.round(b1 + (b2 - b1) * factor);
-        
-        return `rgb(${r}, ${g}, ${b})`;
     }
 
     render() {
@@ -102,12 +92,17 @@ class CursorTrailEffect {
 
         // Update particles
         const particle = this.particles[this.particlePointer];
-        particle.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
-        particle.style.opacity = '0.5';
         
-        setTimeout(() => {
-            particle.style.opacity = '0';
-        }, 100);
+        if (particle) {
+            particle.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+            particle.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                if (particle) {
+                    particle.style.opacity = '0';
+                }
+            }, 100);
+        }
 
         this.particlePointer = (this.particlePointer + 1) % this.numParticles;
 
@@ -116,6 +111,8 @@ class CursorTrailEffect {
 }
 
 // Initialize the cursor trail effect
-document.addEventListener('DOMContentLoaded', () => {
-    new CursorTrailEffect();
-}); 
+if (!window.matchMedia('(hover: none)').matches) {
+    document.addEventListener('DOMContentLoaded', () => {
+        new CursorTrailEffect();
+    });
+} 
