@@ -740,13 +740,15 @@ const blogPosts = [
         title: "SoulSync: Pioneering AI for Cognitive Wellness",
         date: "February 9, 2024",
         category: "Achievement",
+        image: "images/blog/1720937570476.jpeg",
+        excerpt: "Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.",
         content: `
             <div class="post-meta">
                 <span class="post-date">February 9, 2024</span>
                 <span class="post-category">Achievement</span>
             </div>
             <h2>SoulSync: Pioneering AI for Cognitive Wellness</h2>
-            <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team" loading="lazy">
+            <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team at IBM" class="post-main-image" loading="lazy">
             <p>We are thrilled to announce that Bits n Bytes secured 1st Runner-Up at the prestigious IBM watsonx Challenge during the International GenAI Conclave! Our innovation, SoulSync, is an AI-powered companion designed to enhance memory, cognitive function, and emotional well-being in the elderly through personalized storytelling and intelligent reminders.</p>
             
             <h3>The Vision Behind SoulSync</h3>
@@ -756,6 +758,12 @@ const blogPosts = [
                 <li>AI-driven reminders for medications, appointments, and daily tasks</li>
                 <li>Empathetic conversations to provide companionship and emotional support</li>
             </ul>
+
+            <div class="image-grid">
+                <img src="images/blog/1720937571684.jpeg" alt="Award Ceremony at IBM watsonx Challenge" loading="lazy">
+                <img src="images/blog/1720937573469.jpeg" alt="Team Presentation" loading="lazy">
+                <img src="images/blog/1720937580394.jpeg" alt="Recognition by Chief Minister" loading="lazy">
+            </div>
 
             <h3>Meet Team Bits n Bytes</h3>
             <p>This accomplishment was made possible by our dedicated team:</p>
@@ -769,6 +777,16 @@ const blogPosts = [
             <p>We extend our heartfelt gratitude to our mentors and supporters:</p>
             <p>Carl Francis, Roshini Varma, Srinivasan Muthuswamy, Anbumunee P., Latha Raj, Kamitha Jairaj, Sarika Nair, Utpalendra Kumar Deka, and Anil Antony</p>
             <p>Sahrdaya College of Engineering & Technology (SCET) for their unwavering support and encouragement.</p>
+
+            <div class="tags">
+                <span class="tag">#GenerativeAI</span>
+                <span class="tag">#Innovation</span>
+                <span class="tag">#IBMwatsonx</span>
+                <span class="tag">#TeamBitsNBytes</span>
+                <span class="tag">#SoulSync</span>
+                <span class="tag">#AIForGood</span>
+                <span class="tag">#ElderCare</span>
+            </div>
         `
     },
     {
