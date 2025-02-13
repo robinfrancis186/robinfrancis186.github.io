@@ -1600,8 +1600,7 @@ button[type="submit"].error {
 .blog-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     z-index: 1100;
@@ -1609,30 +1608,28 @@ button[type="submit"].error {
 }
 
 .blog-modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
 }
 
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    z-index: 1101;
 }
 
 .modal-container {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 900px;
-    max-height: 90vh;
+    max-height: 85vh;
     overflow-y: auto;
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
@@ -1641,13 +1638,14 @@ button[type="submit"].error {
     box-shadow: var(--glass-shadow);
     border-radius: 1rem;
     padding: 2rem;
-    z-index: 1101;
+    z-index: 1102;
+    margin: 0;
 }
 
 .close-modal {
-    position: sticky;
-    top: 0;
-    float: right;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1660,8 +1658,7 @@ button[type="submit"].error {
     justify-content: center;
     cursor: pointer;
     color: var(--text-primary);
-    margin: -1rem -1rem 1rem 1rem;
-    z-index: 2;
+    z-index: 1;
     transition: transform 0.3s ease;
 }
 
@@ -1670,29 +1667,15 @@ button[type="submit"].error {
 }
 
 .modal-content {
+    padding: 1rem 0.5rem;
     margin-top: 1rem;
-    padding-right: 0.5rem;
-}
-
-.modal-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-radius: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 4px;
 }
 
 /* Modal Animation */
 .modal-container {
     opacity: 0;
     transform: translate(-50%, -45%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .blog-modal.active .modal-container {
@@ -1705,26 +1688,27 @@ button[type="submit"].error {
     .modal-container {
         width: 95%;
         padding: 1.5rem;
-        margin: 0;
-        max-height: 85vh;
-    }
-
-    .close-modal {
-        margin: -0.5rem -0.5rem 0.5rem 0.5rem;
+        max-height: 80vh;
     }
 
     .modal-content {
-        padding-right: 0;
+        padding: 0.5rem 0;
+    }
+
+    .close-modal {
+        top: 0.8rem;
+        right: 0.8rem;
     }
 }
 
 /* Safe area insets for modal on iPhone */
 @supports (padding: max(0px)) {
     .modal-container {
-        padding-top: max(2rem, env(safe-area-inset-top));
-        padding-bottom: max(2rem, env(safe-area-inset-bottom));
-        padding-left: max(2rem, env(safe-area-inset-left));
-        padding-right: max(2rem, env(safe-area-inset-right));
+        padding-top: max(1.5rem, env(safe-area-inset-top));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+        margin-top: env(safe-area-inset-top);
     }
 }
 
