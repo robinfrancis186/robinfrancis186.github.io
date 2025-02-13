@@ -1,3 +1,17 @@
+// Preloader functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.querySelector('.preloader');
+    const waterWave = document.querySelector('.water-wave');
+
+    // Wait for the wave animation to complete
+    setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }, 2500); // Total animation duration (2s wave + 0.5s buffer)
+});
+
 // Theme Toggle
 const themeToggle = document.querySelector('.theme-toggle');
 const htmlElement = document.documentElement;
@@ -716,5 +730,117 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add performance optimization classes
     document.querySelectorAll('.hero-section, .post-card, .glass-card').forEach(element => {
         element.classList.add('gpu-accelerated', 'optimize-animation');
+    });
+});
+
+// Blog post data
+const blogPosts = [
+    {
+        id: 1,
+        title: "SoulSync: Pioneering AI for Cognitive Wellness",
+        date: "February 9, 2024",
+        category: "Achievement",
+        content: `
+            <div class="post-meta">
+                <span class="post-date">February 9, 2024</span>
+                <span class="post-category">Achievement</span>
+            </div>
+            <h2>SoulSync: Pioneering AI for Cognitive Wellness</h2>
+            <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team" loading="lazy">
+            <p>We are thrilled to announce that Bits n Bytes secured 1st Runner-Up at the prestigious IBM watsonx Challenge during the International GenAI Conclave! Our innovation, SoulSync, is an AI-powered companion designed to enhance memory, cognitive function, and emotional well-being in the elderly through personalized storytelling and intelligent reminders.</p>
+            
+            <h3>The Vision Behind SoulSync</h3>
+            <p>Aging presents challenges such as memory loss and emotional isolation. SoulSync aims to address these through:</p>
+            <ul>
+                <li>Personalized storytelling to evoke nostalgia and strengthen cognitive function</li>
+                <li>AI-driven reminders for medications, appointments, and daily tasks</li>
+                <li>Empathetic conversations to provide companionship and emotional support</li>
+            </ul>
+
+            <h3>Meet Team Bits n Bytes</h3>
+            <p>This accomplishment was made possible by our dedicated team:</p>
+            <ul>
+                <li>Joel Jaison</li>
+                <li>Vivek K J</li>
+                <li>Adwaith Jayasankar</li>
+            </ul>
+
+            <h3>Acknowledgments</h3>
+            <p>We extend our heartfelt gratitude to our mentors and supporters:</p>
+            <p>Carl Francis, Roshini Varma, Srinivasan Muthuswamy, Anbumunee P., Latha Raj, Kamitha Jairaj, Sarika Nair, Utpalendra Kumar Deka, and Anil Antony</p>
+            <p>Sahrdaya College of Engineering & Technology (SCET) for their unwavering support and encouragement.</p>
+        `
+    },
+    {
+        id: 2,
+        title: "Making History: IEEE R10 Outstanding Volunteer Award",
+        date: "February 15, 2024",
+        category: "Achievement",
+        content: `
+            <div class="post-meta">
+                <span class="post-date">February 15, 2024</span>
+                <span class="post-category">Achievement</span>
+            </div>
+            <h2>Making History: IEEE R10 Outstanding Volunteer Award</h2>
+            <img src="images/blog/1731994207232.jpeg" alt="IEEE R10 Outstanding Volunteer Award" loading="lazy">
+            <p>I am deeply honored to receive the IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award 🏆—a recognition that marks a historic milestone as the first student in history to receive this prestigious honor. This award reflects my journey of growth, leadership, and impact within the IEEE community.</p>
+
+            <h3>A Journey of Empowerment & Innovation</h3>
+            <p>As Chairman of IEEE Sahrdaya SB, I have been privileged to:</p>
+            <ul>
+                <li>Organize 116+ events engaging over 400+ members, fostering innovation, collaboration, and professional growth</li>
+                <li>Drive membership growth, creating a thriving and engaged IEEE community</li>
+                <li>Secure over $7,500 in funding and a $4,500 travel grant, empowering students with opportunities</li>
+                <li>Conduct STEM outreach programs for pre-university students, inspiring young minds</li>
+            </ul>
+
+            <h3>Gratitude & Acknowledgments</h3>
+            <p>This award is a testament to the incredible support from my mentors, peers, and the IEEE community. A special thanks to:</p>
+            <p>Shone Jose, Anil Antony, Krishnapriya K, Derick Davies, Hridaya Suresh, Devika T V, Vivek K J, and everyone who has believed in me.</p>
+            <p>IEEE India Council, IEEE Kerala Section, IEEE Computer Society, and IEEE Sahrdaya SB for their constant encouragement and support.</p>
+        `
+    }
+];
+
+// Blog Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.querySelector('.blog-modal');
+    const modalContent = modal.querySelector('.modal-content');
+    const closeButton = modal.querySelector('.close-modal');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+
+    // Open modal when clicking "Read Full Story"
+    document.querySelectorAll('.read-more-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const postId = parseInt(this.getAttribute('data-post'));
+            const post = blogPosts.find(p => p.id === postId);
+            
+            if (post) {
+                modalContent.innerHTML = post.content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal when clicking the close button
+    closeButton.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside
+    modalOverlay.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 }); 

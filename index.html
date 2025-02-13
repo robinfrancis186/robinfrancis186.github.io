@@ -148,6 +148,14 @@
     <meta http-equiv="Cache-Control" content="max-age=31536000">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="rf-text">R.F</div>
+            <div class="water-wave"></div>
+        </div>
+    </div>
+
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader"></div>
@@ -177,7 +185,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -409,41 +417,43 @@
         </section>
 
         <!-- Blog Section -->
-        <section id="blog">
+        <section id="blogs">
             <div class="container">
-                <h2>Latest Updates</h2>
-                <div class="blog-grid">
-                    <!-- Featured Post -->
-                    <article class="post-card featured glass-card">
-                        <div class="post-image">
-                            <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team" loading="lazy">
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span class="post-date">February 9, 2024</span>
-                                <span class="post-category">Achievement</span>
+                <h2>Blogs</h2>
+                <div class="blog-scroll-wrapper">
+                    <div class="blog-grid">
+                        <!-- Featured Post -->
+                        <article class="post-card featured glass-card">
+                            <div class="post-image">
+                                <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team" loading="lazy">
                             </div>
-                            <h3>SoulSync: Pioneering AI for Cognitive Wellness</h3>
-                            <p class="post-excerpt">Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.</p>
-                            <a href="#" class="read-more-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">February 9, 2024</span>
+                                    <span class="post-category">Achievement</span>
+                                </div>
+                                <h3>SoulSync: Pioneering AI for Cognitive Wellness</h3>
+                                <p class="post-excerpt">Bits n Bytes secured 1st Runner-Up at the IBM watsonx Challenge during the International GenAI Conclave with SoulSync, an AI-powered companion for cognitive wellness.</p>
+                                <a href="#" class="read-more-link" data-post="1">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
 
-                    <!-- Regular Post -->
-                    <article class="post-card glass-card">
-                        <div class="post-image">
-                            <img src="images/blog/1731994207232.jpeg" alt="IEEE R10 Outstanding Volunteer Award" loading="lazy">
-                        </div>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span class="post-date">February 15, 2024</span>
-                                <span class="post-category">Achievement</span>
+                        <!-- Regular Post -->
+                        <article class="post-card glass-card">
+                            <div class="post-image">
+                                <img src="images/blog/1731994207232.jpeg" alt="IEEE R10 Outstanding Volunteer Award" loading="lazy">
                             </div>
-                            <h3>Making History: IEEE R10 Outstanding Volunteer Award</h3>
-                            <p class="post-excerpt">A historic milestone as the first student to receive the prestigious IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award.</p>
-                            <a href="#" class="read-more-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">February 15, 2024</span>
+                                    <span class="post-category">Achievement</span>
+                                </div>
+                                <h3>Making History: IEEE R10 Outstanding Volunteer Award</h3>
+                                <p class="post-excerpt">A historic milestone as the first student to receive the prestigious IEEE Region 10 Student Activities Committee Best Outstanding Volunteer Award.</p>
+                                <a href="#" class="read-more-link" data-post="2">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -491,6 +501,19 @@
             </div>
         </section>
     </main>
+
+    <!-- Blog Post Modal -->
+    <div class="blog-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container glass-card">
+            <button class="close-modal" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
