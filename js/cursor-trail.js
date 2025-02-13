@@ -80,8 +80,8 @@ class CursorTrailEffect {
             
             particle.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             particle.style.opacity = isDarkTheme ? '0.3' : '0.2';
-            particle.style.width = `${8 - (index * 0.2)}px`;
-            particle.style.height = `${8 - (index * 0.2)}px`;
+            particle.style.width = `${12 - (index * 0.15)}px`;
+            particle.style.height = `${12 - (index * 0.15)}px`;
         });
     }
 
