@@ -1399,3 +1399,36 @@ button[type="submit"].error {
 .form-group:hover textarea:not(:focus):not(.error) {
     border-color: var(--accent-secondary);
 }
+
+/* Cursor Trail Effect */
+.cursor-particle {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s ease;
+    z-index: 9999;
+    mix-blend-mode: screen;
+}
+
+[data-theme="dark"] .cursor-particle {
+    mix-blend-mode: overlay;
+}
+
+@media (hover: none) {
+    .cursor-particle {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-particle {
+        display: none;
+    }
+}
