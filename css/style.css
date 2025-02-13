@@ -1600,26 +1600,19 @@ button[type="submit"].error {
 .blog-modal {
     display: none;
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 1100;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9999;
     overflow: hidden;
 }
 
 .blog-modal.active {
     display: block;
-}
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: 1101;
 }
 
 .modal-container {
@@ -1630,35 +1623,32 @@ button[type="submit"].error {
     width: 90%;
     max-width: 900px;
     max-height: 85vh;
-    overflow-y: auto;
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: 1rem;
-    padding: 2rem;
-    z-index: 1102;
-    margin: 0;
+    overflow: hidden;
 }
 
 .close-modal {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
-    width: 2.5rem;
-    height: 2.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: var(--text-primary);
-    z-index: 1;
+    z-index: 10000;
     transition: transform 0.3s ease;
 }
 
@@ -1667,32 +1657,21 @@ button[type="submit"].error {
 }
 
 .modal-content {
-    padding: 1rem 0.5rem;
-    margin-top: 1rem;
-}
-
-/* Modal Animation */
-.modal-container {
-    opacity: 0;
-    transform: translate(-50%, -45%);
-    transition: all 0.3s ease;
-}
-
-.blog-modal.active .modal-container {
-    opacity: 1;
-    transform: translate(-50%, -50%);
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: calc(85vh - 4rem);
 }
 
 /* Mobile Modal Adjustments */
 @media screen and (max-width: 768px) {
     .modal-container {
         width: 95%;
-        padding: 1.5rem;
-        max-height: 80vh;
+        max-height: 90vh;
     }
 
     .modal-content {
-        padding: 0.5rem 0;
+        padding: 1.5rem;
+        max-height: calc(90vh - 3rem);
     }
 
     .close-modal {
@@ -1701,13 +1680,10 @@ button[type="submit"].error {
     }
 }
 
-/* Safe area insets for modal on iPhone */
+/* Safe area insets for iPhone */
 @supports (padding: max(0px)) {
     .modal-container {
-        padding-top: max(1.5rem, env(safe-area-inset-top));
-        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
-        padding-left: max(1.5rem, env(safe-area-inset-left));
-        padding-right: max(1.5rem, env(safe-area-inset-right));
+        max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
         margin-top: env(safe-area-inset-top);
     }
 }
