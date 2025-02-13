@@ -1605,10 +1605,13 @@ button[type="submit"].error {
     width: 100%;
     height: 100%;
     z-index: 1100;
+    overflow: hidden;
 }
 
 .blog-modal.active {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-overlay {
@@ -1632,16 +1635,23 @@ button[type="submit"].error {
     max-height: 90vh;
     overflow-y: auto;
     background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 1rem;
     padding: 2rem;
+    z-index: 1101;
 }
 
 .close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    position: sticky;
+    top: 0;
+    float: right;
     background: var(--glass-bg);
-    border: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -1650,6 +1660,8 @@ button[type="submit"].error {
     justify-content: center;
     cursor: pointer;
     color: var(--text-primary);
+    margin: -1rem -1rem 1rem 1rem;
+    z-index: 2;
     transition: transform 0.3s ease;
 }
 
@@ -1659,44 +1671,27 @@ button[type="submit"].error {
 
 .modal-content {
     margin-top: 1rem;
+    padding-right: 0.5rem;
 }
 
-.modal-content img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
+.modal-content::-webkit-scrollbar {
+    width: 8px;
 }
 
-.modal-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+.modal-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
 }
 
-.modal-content .post-meta {
-    margin-bottom: 2rem;
-}
-
-.modal-content p {
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-}
-
-.modal-content ul {
-    margin: 1rem 0 1.5rem 1.5rem;
-    color: var(--text-secondary);
-}
-
-.modal-content li {
-    margin-bottom: 0.5rem;
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
 }
 
 /* Modal Animation */
 .modal-container {
     opacity: 0;
-    transform: translate(-50%, -48%);
+    transform: translate(-50%, -45%);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -1705,10 +1700,31 @@ button[type="submit"].error {
     transform: translate(-50%, -50%);
 }
 
-@media (max-width: 768px) {
+/* Mobile Modal Adjustments */
+@media screen and (max-width: 768px) {
     .modal-container {
         width: 95%;
         padding: 1.5rem;
+        margin: 0;
+        max-height: 85vh;
+    }
+
+    .close-modal {
+        margin: -0.5rem -0.5rem 0.5rem 0.5rem;
+    }
+
+    .modal-content {
+        padding-right: 0;
+    }
+}
+
+/* Safe area insets for modal on iPhone */
+@supports (padding: max(0px)) {
+    .modal-container {
+        padding-top: max(2rem, env(safe-area-inset-top));
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+        padding-left: max(2rem, env(safe-area-inset-left));
+        padding-right: max(2rem, env(safe-area-inset-right));
     }
 }
 
