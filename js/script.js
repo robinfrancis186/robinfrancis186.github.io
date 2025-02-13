@@ -748,7 +748,9 @@ const blogPosts = [
                 <span class="post-category">Achievement</span>
             </div>
             <h2>SoulSync: Pioneering AI for Cognitive Wellness</h2>
-            <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team at IBM" class="post-main-image" loading="lazy">
+            <div class="post-image-container">
+                <img src="images/blog/1720937570476.jpeg" alt="SoulSync Team at IBM" class="post-main-image">
+            </div>
             <p>We are thrilled to announce that Bits n Bytes secured 1st Runner-Up at the prestigious IBM watsonx Challenge during the International GenAI Conclave! Our innovation, SoulSync, is an AI-powered companion designed to enhance memory, cognitive function, and emotional well-being in the elderly through personalized storytelling and intelligent reminders.</p>
             
             <h3>The Vision Behind SoulSync</h3>
@@ -760,9 +762,15 @@ const blogPosts = [
             </ul>
 
             <div class="image-grid">
-                <img src="images/blog/1720937571684.jpeg" alt="Award Ceremony at IBM watsonx Challenge" loading="lazy">
-                <img src="images/blog/1720937573469.jpeg" alt="Team Presentation" loading="lazy">
-                <img src="images/blog/1720937580394.jpeg" alt="Recognition by Chief Minister" loading="lazy">
+                <div class="grid-image">
+                    <img src="images/blog/1720937571684.jpeg" alt="Award Ceremony at IBM watsonx Challenge">
+                </div>
+                <div class="grid-image">
+                    <img src="images/blog/1720937573469.jpeg" alt="Team Presentation">
+                </div>
+                <div class="grid-image">
+                    <img src="images/blog/1720937580394.jpeg" alt="Recognition by Chief Minister">
+                </div>
             </div>
 
             <h3>Meet Team Bits n Bytes</h3>
