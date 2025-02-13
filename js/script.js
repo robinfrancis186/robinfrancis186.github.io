@@ -807,7 +807,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.querySelector('.blog-modal');
     const modalContent = modal.querySelector('.modal-content');
     const closeButton = modal.querySelector('.close-modal');
-    const modalOverlay = modal.querySelector('.modal-overlay');
 
     // Open modal when clicking "Read Full Story"
     document.querySelectorAll('.read-more-link').forEach(link => {
@@ -820,27 +819,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 modalContent.innerHTML = post.content;
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                
+                // Ensure modal content scrolls to top
+                modalContent.scrollTop = 0;
+                
+                // Add touch scrolling for iOS
+                modalContent.style.webkitOverflowScrolling = 'touch';
             }
         });
     });
 
-    // Close modal when clicking the close button
-    closeButton.addEventListener('click', () => {
+    // Close modal function
+    function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        modalContent.innerHTML = ''; // Clear content
+    }
+
+    // Close modal when clicking the close button
+    closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal();
     });
 
     // Close modal when clicking outside
-    modalOverlay.addEventListener('click', () => {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
     });
 
     // Close modal when pressing Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+            closeModal();
         }
+    });
+
+    // Prevent scrolling propagation
+    modalContent.addEventListener('wheel', (e) => {
+        e.stopPropagation();
+    });
+
+    // Handle touch events for mobile
+    modalContent.addEventListener('touchstart', (e) => {
+        const top = modalContent.scrollTop;
+        const totalScroll = modalContent.scrollHeight;
+        const currentScroll = top + modalContent.offsetHeight;
+
+        if (top === 0) {
+            modalContent.scrollTop = 1;
+        } else if (currentScroll === totalScroll) {
+            modalContent.scrollTop = top - 1;
+        }
+    });
+
+    // Prevent body scroll when modal is open on iOS
+    modalContent.addEventListener('touchmove', (e) => {
+        e.stopPropagation();
     });
 }); 
