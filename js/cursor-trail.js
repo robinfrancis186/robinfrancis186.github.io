@@ -6,8 +6,11 @@ class CursorTrailEffect {
         
         this.particles = [];
         this.particlePointer = 0;
-        this.numParticles = 20;
+        this.numParticles = 15; // Reduced number of particles for better performance
 
+        // Store previous positions for smooth trailing
+        this.positions = Array(this.numParticles).fill().map(() => ({ x: 0, y: 0 }));
+        
         // Create particles
         for (let i = 0; i < this.numParticles; i++) {
             const particle = document.createElement("div");
@@ -19,8 +22,10 @@ class CursorTrailEffect {
         // Initialize variables for smooth animation
         this.position = { x: 0, y: 0 };
         this.mouse = { x: 0, y: 0 };
-        this.speed = 0.2;
+        this.speed = 0.65; // Increased speed for closer following
         this.lastScrollY = window.scrollY;
+        this.lastMouseX = 0;
+        this.lastMouseY = 0;
 
         // Initialize particle colors
         this.updateParticleColors();
@@ -35,16 +40,21 @@ class CursorTrailEffect {
             // Update mouse position considering scroll
             this.mouse.x = event.clientX;
             this.mouse.y = event.clientY + window.scrollY;
+            
+            // Update last known positions
+            this.lastMouseX = this.mouse.x;
+            this.lastMouseY = this.mouse.y;
         });
 
         window.addEventListener("scroll", () => {
             // Update particles position on scroll
             const scrollDiff = window.scrollY - this.lastScrollY;
-            this.particles.forEach(particle => {
-                const top = parseFloat(particle.style.top) || 0;
-                particle.style.top = `${top + scrollDiff}px`;
+            this.particles.forEach((particle, index) => {
+                this.positions[index].y += scrollDiff;
+                particle.style.transform = `translate(${this.positions[index].x}px, ${this.positions[index].y}px)`;
             });
             this.lastScrollY = window.scrollY;
+            this.mouse.y = this.lastMouseY + window.scrollY;
         });
 
         // Handle theme changes
@@ -80,31 +90,26 @@ class CursorTrailEffect {
             
             particle.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             particle.style.opacity = isDarkTheme ? '0.3' : '0.2';
-            particle.style.width = `${12 - (index * 0.15)}px`;
-            particle.style.height = `${12 - (index * 0.15)}px`;
+            particle.style.width = `${8 - (index * 0.2)}px`; // Smaller particles
+            particle.style.height = `${8 - (index * 0.2)}px`; // Smaller particles
         });
     }
 
     render() {
-        // Smooth position updating
+        // Update current position
         this.position.x += (this.mouse.x - this.position.x) * this.speed;
         this.position.y += (this.mouse.y - this.position.y) * this.speed;
 
-        // Update particles
-        const particle = this.particles[this.particlePointer];
-        
-        if (particle) {
-            particle.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
-            particle.style.opacity = '0.5';
-            
-            setTimeout(() => {
-                if (particle) {
-                    particle.style.opacity = '0';
-                }
-            }, 100);
-        }
+        // Update particle positions with trailing effect
+        this.positions.unshift({ x: this.position.x, y: this.position.y });
+        this.positions.pop();
 
-        this.particlePointer = (this.particlePointer + 1) % this.numParticles;
+        // Update particles
+        this.particles.forEach((particle, index) => {
+            const position = this.positions[index];
+            particle.style.transform = `translate(${position.x}px, ${position.y}px)`;
+            particle.style.opacity = (1 - index / this.numParticles) * 0.5;
+        });
 
         requestAnimationFrame(() => this.render());
     }
