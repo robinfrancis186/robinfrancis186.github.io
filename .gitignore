@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+dist/
+.vite/
+*.log
+pnpm-lock.yaml
+yarn.lock
+coverage/
+tmp/
+.env
+.env.local
+
