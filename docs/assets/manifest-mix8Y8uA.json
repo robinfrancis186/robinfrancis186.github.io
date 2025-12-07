@@ -1,0 +1,16 @@
+{
+    "name": "Robin Francis - Portfolio",
+    "short_name": "Robin Portfolio",
+    "description": "Computer Science Student and Full Stack Developer Portfolio",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "images/favicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+} 
