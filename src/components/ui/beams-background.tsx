@@ -38,3 +38,4 @@ export const BeamsBackground = ({ className }: BeamsBackgroundProps) => {
     );
 };
 
+

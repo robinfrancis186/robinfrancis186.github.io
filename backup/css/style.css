@@ -156,7 +156,7 @@ nav {
     inset: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, var(--gradient-start) 0%, transparent 30%),
         radial-gradient(circle at 80% 80%, var(--gradient-end) 0%, transparent 30%);
     opacity: 0.1;
@@ -195,6 +195,7 @@ nav {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -236,6 +237,7 @@ section {
         opacity: 0;
         transform: scale(0.95);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -246,6 +248,7 @@ section {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -255,6 +258,7 @@ section {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -264,6 +268,7 @@ section {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -273,6 +278,7 @@ section {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -334,7 +340,9 @@ section h2 {
 }
 
 /* Form elements */
-input, textarea, button {
+input,
+textarea,
+button {
     background: var(--bg-secondary);
     border: 2px solid var(--text-secondary);
     color: var(--text-primary);
@@ -927,7 +935,10 @@ img.loaded {
 
 /* 3D Animation Keyframes */
 @keyframes float {
-    0%, 50%, 100% {
+
+    0%,
+    50%,
+    100% {
         transform: none;
     }
 }
@@ -1012,6 +1023,7 @@ section h2::after {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1049,6 +1061,7 @@ main {
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
     .hero-title.multilingual-name,
     .pixel,
     .hero-content {
@@ -1096,6 +1109,7 @@ main {
 
 /* Touch Device Optimizations */
 @media (hover: none) {
+
     .btn:hover,
     .theme-toggle:hover,
     .social-link:hover,
@@ -1127,6 +1141,7 @@ main {
 
 /* Print Styles */
 @media print {
+
     .theme-toggle,
     .mobile-menu,
     .nav-links,
@@ -1158,6 +1173,7 @@ main {
 
 /* Responsive Grid Layouts */
 @media (max-width: 768px) {
+
     .posts-grid,
     .projects-grid,
     .achievements-grid {
@@ -1194,7 +1210,9 @@ main {
 }
 
 /* High-DPI Screen Optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
     .glass-card,
     .project-card,
     .contact-item,
@@ -1227,6 +1245,7 @@ main {
     }
 
     @container (max-width: 768px) {
+
         .posts-grid,
         .projects-grid {
             grid-template-columns: 1fr;
@@ -1266,6 +1285,7 @@ main {
         transform: translateY(-10px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1285,6 +1305,7 @@ button[type="submit"] i.fa-spinner {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -1361,16 +1382,25 @@ button[type="submit"].error {
 
 /* Animation Keyframes */
 @keyframes shake {
-    10%, 90% {
+
+    10%,
+    90% {
         transform: translateX(-1px);
     }
-    20%, 80% {
+
+    20%,
+    80% {
         transform: translateX(2px);
     }
-    30%, 50%, 70% {
+
+    30%,
+    50%,
+    70% {
         transform: translateX(-4px);
     }
-    40%, 60% {
+
+    40%,
+    60% {
         transform: translateX(4px);
     }
 }
@@ -1380,6 +1410,7 @@ button[type="submit"].error {
         transform: translateY(-10px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1441,13 +1472,16 @@ button[type="submit"].error {
     overflow-x: auto;
     padding: 1rem 0;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
     scroll-behavior: smooth;
 }
 
 .blog-grid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 .post-card {
@@ -1465,7 +1499,7 @@ button[type="submit"].error {
     .post-card {
         width: 300px;
     }
-    
+
     .post-card.featured {
         width: 300px;
     }
@@ -1684,6 +1718,7 @@ button[type="submit"].error {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1793,14 +1828,17 @@ button[type="submit"].error {
         bottom: -100%;
         border-radius: 50% 50% 0 0;
     }
+
     50% {
         bottom: 0;
         border-radius: 30% 30% 0 0;
     }
+
     75% {
         bottom: 0;
         border-radius: 0;
     }
+
     100% {
         bottom: 100%;
         border-radius: 0;
@@ -1809,6 +1847,7 @@ button[type="submit"].error {
 
 /* iPhone 16 Pro Max and similar devices */
 @media screen and (max-width: 430px) {
+
     /* Header adjustments */
     header {
         padding: 0.5rem;
@@ -1984,6 +2023,7 @@ button[type="submit"].error {
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
+
     .post-card:hover,
     .glass-card:hover,
     .project-card:hover {

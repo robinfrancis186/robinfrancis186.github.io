@@ -6,10 +6,7 @@ Allow: /css/
 Allow: /js/
 
 # Sitemaps
-Sitemap: https://robinfrancis186.github.io/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 10
+Sitemap: https://robinfrancis186.me/sitemap.xml
 
 # Host
-Host: https://robinfrancis186.github.io 
+Host: https://robinfrancis186.me 
