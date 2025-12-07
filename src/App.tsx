@@ -10,7 +10,6 @@ import Lenis from 'lenis'
 const Skills = lazy(() => import('./components/sections/Skills'))
 const Projects = lazy(() => import('./components/sections/Projects'))
 const Blog = lazy(() => import('./components/sections/Blog'))
-const FAQ = lazy(() => import('./components/sections/FAQ'))
 const Contact = lazy(() => import('./components/sections/Contact'))
 import Footer from './components/Footer'
 
@@ -63,7 +62,6 @@ function App() {
                     <Skills />
                     <Projects />
                     <Blog />
-                    <FAQ />
                     <Contact />
                 </Suspense>
             </main>
