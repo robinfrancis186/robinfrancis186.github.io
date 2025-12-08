@@ -78,6 +78,21 @@
     .glass-panel {
         @apply bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl;
     }
+
+    /* Marquee animation for InfiniteMovingCards */
+    .animate-scroll {
+        animation: scroll var(--animation-duration, 40s) linear infinite;
+        animation-direction: var(--animation-direction, forwards);
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
 }
 
 html {

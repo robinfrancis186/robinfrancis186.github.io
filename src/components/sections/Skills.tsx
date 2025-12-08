@@ -4,9 +4,9 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-20 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-            <h2 className="text-3xl font-bold text-center mb-16 z-10 w-full">Skills</h2>
-            <div className="w-full relative max-w-7xl mx-auto">
+        <section id="skills" className="py-16 sm:py-20 w-full flex flex-col bg-background items-center justify-center relative overflow-hidden">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 z-10 w-full text-slate-900 dark:text-slate-100">Skills</h2>
+            <div className="w-full relative max-w-6xl mx-auto px-4">
                 <InfiniteMovingCards
                     items={skills}
                     direction="right"

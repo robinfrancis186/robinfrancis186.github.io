@@ -10,18 +10,22 @@ export interface CarouselItem {
     category: string;
     image: string;
     excerpt?: string;
+    slug?: string;
+    content?: string;
 }
 
 interface Carousel3DProps {
     items: CarouselItem[];
     autoPlay?: boolean;
     interval?: number;
+    onSelect?: (item: CarouselItem) => void;
 }
 
 export const Carousel3D = ({
     items,
     autoPlay = false,
     interval = 5000,
+    onSelect,
 }: Carousel3DProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -124,7 +128,13 @@ export const Carousel3D = ({
                     {items.map((item, index) => {
                         const { style, className } = getCardStyle(index);
                         return (
-                            <div key={item.id} className={className} style={style}>
+                        <button
+                                key={item.id}
+                                className={className}
+                                style={style}
+                            onClick={() => onSelect?.(item)}
+                                aria-label={`Open post ${item.title}`}
+                            >
                                 <img
                                     src={item.image}
                                     alt={item.title}
@@ -159,7 +169,7 @@ export const Carousel3D = ({
                                         </p>
                                     )}
                                 </div>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>
@@ -172,6 +182,7 @@ export const Carousel3D = ({
             >
                 <ArrowRight className="h-5 w-5" />
             </button>
+
         </div>
     );
 };

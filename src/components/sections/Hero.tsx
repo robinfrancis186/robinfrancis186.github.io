@@ -111,7 +111,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
-                            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+                            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10"
                         >
                             <a href="#projects" className="group relative inline-block">
                                 <button className="group hover:shadow-sky-500/30 hover:shadow-2xl
@@ -154,7 +154,7 @@ const Hero = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 1 }}
-                            className="flex items-center justify-center gap-8 z-20 relative"
+                            className="flex items-center justify-center gap-8 z-20 relative -mt-2"
                         >
                             <a href="mailto:robinfrancis186@gmail.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-300">
                                 <Mail size={28} strokeWidth={1.5} />
