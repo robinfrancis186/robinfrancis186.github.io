@@ -107,9 +107,9 @@ const GridItem = ({ area, icon, title, description, variants }: GridItemProps) =
                             <h3 className="-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance text-black md:text-2xl/[1.875rem] dark:text-white">
                                 {title}
                             </h3>
-                            <h2 className="font-sans text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400 [&_b]:md:font-semibold [&_strong]:md:font-semibold">
+                            <p className="font-sans text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400 [&_b]:md:font-semibold [&_strong]:md:font-semibold">
                                 {description}
-                            </h2>
+                            </p>
                         </div>
                     </div>
                 </div>
