@@ -4,52 +4,69 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const Skills = () => {
     return (
-        <section className="h-[20rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-            <h2 className="text-3xl font-bold text-center mb-8 z-10">Technical Skills</h2>
-            <InfiniteMovingCards
-                items={skills}
-                direction="right"
-                speed="slow"
-            />
+        <section id="skills" className="py-20 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+            <h2 className="text-3xl font-bold text-center mb-16 z-10 w-full">Skills</h2>
+            <div className="w-full relative max-w-7xl mx-auto">
+                <InfiniteMovingCards
+                    items={skills}
+                    direction="right"
+                    speed="slow"
+                />
+            </div>
         </section>
     );
 };
 
 const skills = [
     {
-        quote: "Building interactive UIs",
-        name: "React",
-        title: "Frontend Library",
+        quote: "Front-End Development",
+        name: "React.js",
+        title: "Library",
     },
     {
-        quote: "Type-safe development",
+        quote: "Language",
         name: "TypeScript",
-        title: "Language",
+        title: "Development",
     },
     {
-        quote: "Utility-first styling",
+        quote: "Styling",
         name: "Tailwind CSS",
-        title: "CSS Framework",
-    },
-    {
-        quote: "Production-grade React framework",
-        name: "Next.js",
         title: "Framework",
     },
     {
-        quote: "Backend development",
+        quote: "3D Graphics",
+        name: "Three.js",
+        title: "Library",
+    },
+    {
+        quote: "Animations",
+        name: "Framer Motion",
+        title: "Library",
+    },
+    {
+        quote: "AI & Machine Learning",
+        name: "Python",
+        title: "Language",
+    },
+    {
+        quote: "Generative AI",
+        name: "GenAI",
+        title: "AI Technology",
+    },
+    {
+        quote: "Backend",
         name: "Node.js",
         title: "Runtime",
     },
     {
-        quote: "Database management",
-        name: "PostgreSQL",
-        title: "Database",
+        quote: "Version Control",
+        name: "Git",
+        title: "Tool",
     },
     {
-        quote: "Containerization",
-        name: "Docker",
-        title: "DevOps",
+        quote: "Design",
+        name: "Figma",
+        title: "UI/UX",
     },
 ];
 
