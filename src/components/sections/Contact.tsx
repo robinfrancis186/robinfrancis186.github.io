@@ -1,7 +1,18 @@
 import { DotScreenShader } from "@/components/ui/dot-shader-background";
 import { Button } from "@/components/ui/neon-button";
+import { useState } from "react";
 
 const Contact = () => {
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const subject = "Contact from Portfolio";
+        const body = `From: ${email}\n\n${message}`;
+        window.location.href = `mailto:robinfrancis186@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
     return (
         <section id="contact" className="h-[40rem] w-full rounded-md bg-white relative flex flex-col items-center justify-center antialiased">
             <div className="max-w-2xl mx-auto p-4">
@@ -13,15 +24,21 @@ const Contact = () => {
                     I’m always open to collaborations, mentorship, community projects, or opportunities to build meaningful technology
                 </p>
                 <div className="relative z-10 mt-8">
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <input
                             type="email"
                             placeholder="Your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                             className="rounded-lg border border-neutral-200 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-white placeholder:text-neutral-400 text-neutral-900 px-4 py-2"
                         />
                         <textarea
                             placeholder="Your message"
                             rows={4}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            required
                             className="rounded-lg border border-neutral-200 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-white placeholder:text-neutral-400 text-neutral-900 px-4 py-2"
                         />
                         <Button neon={true} className="w-full bg-teal-500 hover:bg-teal-600 text-white border-transparent">
