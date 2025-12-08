@@ -61,6 +61,9 @@ export const FloatingNav = ({
                     className
                 )}
             >
+                <a href="#home" className="mr-2">
+                    <img src="/images/logo.png" alt="Logo" className="h-8 w-auto object-contain" />
+                </a>
                 {navItems.map((navItem: any, idx: number) => (
                     <Link
                         key={`link=${idx}`}
