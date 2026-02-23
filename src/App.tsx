@@ -1,5 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from 'react'
-import { LoaderOne } from '@/components/ui/loader'
+import { useEffect, Suspense, lazy } from 'react'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import Navbar from './components/Navbar'
 import Hero from './components/sections/Hero'
@@ -14,7 +13,6 @@ const Contact = lazy(() => import('./components/sections/Contact'))
 import Footer from './components/Footer'
 
 function App() {
-    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         // Initialize Lenis for smooth scrolling
@@ -40,9 +38,7 @@ function App() {
         }
     }, [])
 
-    if (loading) {
-        return <LoaderOne />
-    }
+
 
     return (
         <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
