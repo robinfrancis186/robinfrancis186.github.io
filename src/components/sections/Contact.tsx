@@ -3,13 +3,14 @@ import { Button } from "@/components/ui/neon-button";
 import { useState } from "react";
 
 const Contact = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const subject = "Contact from Portfolio";
-        const body = `From: ${email}\n\n${message}`;
+        const subject = `Portfolio Contact from ${name}`;
+        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
         window.location.href = `mailto:robinfrancis186@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
@@ -25,23 +26,33 @@ const Contact = () => {
                 </p>
                 <div className="relative z-10 mt-8">
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <input
-                            type="email"
-                            placeholder="Your email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="rounded-lg border border-neutral-200 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-white placeholder:text-neutral-400 text-neutral-900 px-4 py-2"
-                        />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 w-full">
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                className="rounded-lg border border-neutral-200/50 dark:border-neutral-800 focus:ring-2 focus:ring-primary/50 w-full bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm placeholder:text-neutral-500 text-neutral-900 dark:text-neutral-100 px-4 py-3 outline-none transition-all"
+                            />
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="rounded-lg border border-neutral-200/50 dark:border-neutral-800 focus:ring-2 focus:ring-primary/50 w-full bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm placeholder:text-neutral-500 text-neutral-900 dark:text-neutral-100 px-4 py-3 outline-none transition-all"
+                            />
+                        </div>
                         <textarea
-                            placeholder="Your message"
-                            rows={4}
+                            placeholder="Your Message"
+                            rows={5}
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             required
-                            className="rounded-lg border border-neutral-200 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-white placeholder:text-neutral-400 text-neutral-900 px-4 py-2"
+                            className="rounded-lg border border-neutral-200/50 dark:border-neutral-800 focus:ring-2 focus:ring-primary/50 w-full relative z-10 mt-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm placeholder:text-neutral-500 text-neutral-900 dark:text-neutral-100 px-4 py-3 outline-none transition-all resize-none"
                         />
-                        <Button neon={true} className="w-full bg-teal-500 hover:bg-teal-600 text-white border-transparent">
+                        <Button neon={true} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground border-transparent font-medium py-6 text-sm">
                             Send Message
                         </Button>
                     </form>

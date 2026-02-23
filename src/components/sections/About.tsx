@@ -63,15 +63,30 @@ const About = () => {
                         className="mb-12"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                            I am a passionate AI developer, program strategist, and community builder with a strong track record in leading high-impact technical initiatives. My work spans accessible technology, GenAI solutions, student empowerment, and large-scale program execution. I believe in building technology that solves real human problems while uplifting communities through collaboration, mentorship, and creativity.
-                        </p>
-                        <MovingBorderButton
-                            borderRadius="1.75rem"
-                            className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-                        >
-                            Download CV
-                        </MovingBorderButton>
+                        <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
+                            <div className="w-full md:w-1/3 flex-shrink-0">
+                                <div className="relative rounded-2xl overflow-hidden aspect-square ring-1 ring-white/10 shadow-2xl">
+                                    <img
+                                        src="/images/profile-headshot.png"
+                                        alt="Robin Francis"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                </div>
+                            </div>
+                            <div className="w-full md:w-2/3">
+                                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                                    I am a passionate AI developer, program strategist, and community builder with a strong track record in leading high-impact technical initiatives. My work spans accessible technology, GenAI solutions, student empowerment, and large-scale program execution. I believe in building technology that solves real human problems while uplifting communities through collaboration, mentorship, and creativity.
+                                </p>
+                                <MovingBorderButton
+                                    borderRadius="1.75rem"
+                                    className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+                                >
+                                    Download CV
+                                </MovingBorderButton>
+                            </div>
+                        </div>
+
                     </motion.div>
 
                     <div className="mb-16">

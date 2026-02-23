@@ -14,7 +14,7 @@ const Contact = lazy(() => import('./components/sections/Contact'))
 import Footer from './components/Footer'
 
 function App() {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         // Initialize Lenis for smooth scrolling
@@ -35,12 +35,7 @@ function App() {
 
         requestAnimationFrame(raf)
 
-        // Simulate loading time
-        const timer = setTimeout(() => {
-            setLoading(false)
-        }, 2500)
         return () => {
-            clearTimeout(timer)
             lenis.destroy()
         }
     }, [])

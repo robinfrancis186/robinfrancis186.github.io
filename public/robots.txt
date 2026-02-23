@@ -1,12 +1,11 @@
 User-agent: *
 Allow: /
-Allow: /blog.html
 Allow: /images/
 Allow: /css/
 Allow: /js/
 
 # Sitemaps
-Sitemap: https://robinfrancis186.me/sitemap.xml
+Sitemap: https://www.robinfrancis.in/sitemap.xml
 
 # Host
-Host: https://robinfrancis186.me 
+Host: https://www.robinfrancis.in 

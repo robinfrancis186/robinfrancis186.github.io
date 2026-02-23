@@ -1,7 +1,7 @@
 {
     "name": "Robin Francis - Portfolio",
     "short_name": "Robin Portfolio",
-    "description": "Computer Science Student and Full Stack Developer Portfolio",
+    "description": "AI Innovator & Community Leader Portfolio",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -13,4 +13,4 @@
             "type": "image/png"
         }
     ]
-} 
+}
