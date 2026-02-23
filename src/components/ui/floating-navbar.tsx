@@ -7,7 +7,7 @@ import {
     useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Link } from "react-scroll";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 
 export const FloatingNav = ({
@@ -22,6 +22,8 @@ export const FloatingNav = ({
     className?: string;
 }) => {
     const { scrollYProgress } = useScroll();
+    const location = useLocation();
+    const isHomePage = location.pathname === "/";
 
     const [visible, setVisible] = useState(true);
 
@@ -44,12 +46,12 @@ export const FloatingNav = ({
 
     return (
         <>
-            <a
-                href="#home"
+            <RouterLink
+                to="/"
                 className="fixed top-4 left-4 z-[5001] rounded-full bg-white/80 dark:bg-slate-900/80 border border-white/60 dark:border-slate-800 shadow-md px-3 py-2"
             >
                 <img src="/images/logo.png" alt="Logo" className="h-10 w-auto object-contain" />
-            </a>
+            </RouterLink>
 
             <AnimatePresence mode="wait">
                 <motion.div
@@ -69,28 +71,52 @@ export const FloatingNav = ({
                         className
                     )}
                 >
-                    {navItems.map((navItem: any, idx: number) => (
-                        <Link
-                            key={`link=${idx}`}
-                            to={navItem.link.replace('#', '')}
-                            smooth={true}
-                            duration={500}
-                            className={cn(
-                                "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer"
-                            )}
-                        >
-                            <span className="block sm:hidden">{navItem.icon}</span>
-                            <span className="hidden sm:block text-sm">{navItem.name}</span>
-                        </Link>
-                    ))}
+                    {navItems.map((navItem: any, idx: number) => {
+                        const isHashLink = navItem.link.startsWith('/#');
+                        const hashTarget = navItem.link.replace('/#', '#');
 
-                    <a
-                        href="#contact"
-                        className="relative inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-full bg-white text-slate-900 border border-slate-300 shadow-sm hover:bg-slate-50 hover:shadow-md transition dark:bg-slate-900 dark:text-white dark:border-slate-600 dark:hover:bg-slate-800"
-                    >
-                        <span>Contact</span>
-                        <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-                    </a>
+                        return isHomePage && isHashLink ? (
+                            <a
+                                key={`link=${idx}`}
+                                href={hashTarget}
+                                className={cn(
+                                    "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer"
+                                )}
+                            >
+                                <span className="block sm:hidden">{navItem.icon}</span>
+                                <span className="hidden sm:block text-sm">{navItem.name}</span>
+                            </a>
+                        ) : (
+                            <RouterLink
+                                key={`link=${idx}`}
+                                to={navItem.link}
+                                className={cn(
+                                    "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer"
+                                )}
+                            >
+                                <span className="block sm:hidden">{navItem.icon}</span>
+                                <span className="hidden sm:block text-sm">{navItem.name}</span>
+                            </RouterLink>
+                        )
+                    })}
+
+                    {isHomePage ? (
+                        <a
+                            href="#contact"
+                            className="relative inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-full bg-white text-slate-900 border border-slate-300 shadow-sm hover:bg-slate-50 hover:shadow-md transition dark:bg-slate-900 dark:text-white dark:border-slate-600 dark:hover:bg-slate-800"
+                        >
+                            <span>Contact</span>
+                            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+                        </a>
+                    ) : (
+                        <RouterLink
+                            to="/#contact"
+                            className="relative inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-full bg-white text-slate-900 border border-slate-300 shadow-sm hover:bg-slate-50 hover:shadow-md transition dark:bg-slate-900 dark:text-white dark:border-slate-600 dark:hover:bg-slate-800"
+                        >
+                            <span>Contact</span>
+                            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+                        </RouterLink>
+                    )}
                 </motion.div>
             </AnimatePresence>
         </>

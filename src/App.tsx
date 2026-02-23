@@ -1,16 +1,11 @@
-import { useEffect, Suspense, lazy } from 'react'
+import { useEffect } from 'react'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Lenis from 'lenis'
-
-// Lazy load heavy sections
-const Skills = lazy(() => import('./components/sections/Skills'))
-const Projects = lazy(() => import('./components/sections/Projects'))
-const Blog = lazy(() => import('./components/sections/Blog'))
-const Contact = lazy(() => import('./components/sections/Contact'))
+import Home from './pages/Home'
+import ProjectsPage from './pages/ProjectsPage'
 import Footer from './components/Footer'
+import Lenis from 'lenis'
 
 function App() {
 
@@ -41,23 +36,21 @@ function App() {
 
 
     return (
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-            <div className="fixed top-4 right-4 z-[5001]">
-                <ThemeToggle />
+        <Router>
+            <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+                <div className="fixed top-4 right-4 z-[5001]">
+                    <ThemeToggle />
+                </div>
+                <Navbar />
+
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/projects" element={<ProjectsPage />} />
+                </Routes>
+
+                <Footer />
             </div>
-            <Navbar />
-            <main>
-                <Hero />
-                <About />
-                <Suspense fallback={<div className="min-h-[50vh]" />}>
-                    <Skills />
-                    <Projects />
-                    <Blog />
-                    <Contact />
-                </Suspense>
-            </main>
-            <Footer />
-        </div>
+        </Router>
     )
 }
 

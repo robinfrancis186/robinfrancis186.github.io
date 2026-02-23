@@ -5,27 +5,27 @@ const Navbar = () => {
     const navItems = [
         {
             name: "Home",
-            link: "#home",
+            link: "/#home",
             icon: <Home className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
             name: "About",
-            link: "#about",
+            link: "/#about",
             icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
             name: "Projects",
-            link: "#projects",
+            link: "/projects",
             icon: <Briefcase className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
             name: "Blog",
-            link: "#blog",
+            link: "/#blog",
             icon: <FileText className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
             name: "Contact",
-            link: "#contact",
+            link: "/#contact",
             icon: <Mail className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
     ];
