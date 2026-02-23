@@ -45,7 +45,7 @@ const BlogPage = () => {
                     <a href="#article-1" className="group flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center">
                         <div className="w-full sm:w-[280px] shrink-0 overflow-hidden rounded-lg bg-white dark:bg-slate-900 ring-1 ring-neutral-200 dark:ring-neutral-800 shadow-sm">
                             <img
-                                src="https://images.unsplash.com/photo-1499591963217-19816e8851cc?q=80&w=800&auto=format&fit=crop"
+                                src="/images/blog/cinque_terre.png"
                                 alt="Cinque Terre"
                                 className="w-full h-48 sm:h-36 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                             />
@@ -76,7 +76,7 @@ const BlogPage = () => {
                     <a href="#article-2" className="group flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center">
                         <div className="w-full sm:w-[280px] shrink-0 overflow-hidden rounded-lg bg-white dark:bg-slate-900 ring-1 ring-neutral-200 dark:ring-neutral-800 shadow-sm">
                             <img
-                                src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=800&auto=format&fit=crop"
+                                src="/images/blog/autumn_camping.png"
                                 alt="Autumn Camping"
                                 className="w-full h-48 sm:h-36 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                             />
@@ -107,7 +107,7 @@ const BlogPage = () => {
                     <a href="#article-3" className="group flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center">
                         <div className="w-full sm:w-[280px] shrink-0 overflow-hidden rounded-lg bg-white dark:bg-slate-900 ring-1 ring-neutral-200 dark:ring-neutral-800 shadow-sm">
                             <img
-                                src="https://images.unsplash.com/photo-1506744626753-14510b5c1979?q=80&w=800&auto=format&fit=crop"
+                                src="/images/blog/lake_district.png"
                                 alt="Lake District"
                                 className="w-full h-48 sm:h-36 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                             />

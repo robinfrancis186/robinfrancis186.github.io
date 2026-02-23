@@ -26,7 +26,7 @@ const ProjectsPage = () => {
                     {/* Column 1 */}
                     <div className="flex flex-col gap-4 sm:gap-5">
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/af5c4f11-0653-43c0-b21e-5b8cc085c9f3_800w.jpg" alt="Cloud Analytics dashboard project" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/cloud_analytics.png" alt="Cloud Analytics dashboard project" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">SaaS • Product</p>
@@ -50,7 +50,7 @@ const ProjectsPage = () => {
                         </a>
 
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/60f49edd-2009-43cf-a12a-d82fd91aae5e_800w.jpg" alt="E-commerce platform" className="h-72 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/shop_pro.png" alt="E-commerce platform" className="h-72 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">E-commerce • Platform</p>
@@ -74,7 +74,7 @@ const ProjectsPage = () => {
                         </a>
 
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/27aa90c0-b947-4bfd-b8da-7cf0ab291ab1_800w.jpg" alt="Portfolio website" className="h-48 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/creative_hub.png" alt="Portfolio website" className="h-48 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Portfolio • Website</p>
@@ -101,7 +101,7 @@ const ProjectsPage = () => {
                     {/* Column 2 */}
                     <div className="flex flex-col gap-4 sm:gap-5">
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/b19e7d3a-309c-4d55-9373-80ca043c0f49_800w.jpg" alt="Product launch landing page" className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <img src="/images/projects/boltshift.png" alt="Product launch landing page" className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Platform • Website</p>
@@ -125,7 +125,7 @@ const ProjectsPage = () => {
                         </a>
 
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/a76e4f7e-e0f8-4732-8b99-5b3abe6fd91d_800w.jpg" alt="Mobile app design" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/fit_tracker.png" alt="Mobile app design" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Mobile • App</p>
@@ -149,7 +149,7 @@ const ProjectsPage = () => {
                         </a>
 
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/cac77434-d322-40be-a298-4e2198a61175_800w.jpg" alt="Data visualization" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/dataflow.png" alt="Data visualization" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Data • Visualization</p>
@@ -176,7 +176,7 @@ const ProjectsPage = () => {
                     {/* Column 3 */}
                     <div className="flex flex-col gap-4 sm:gap-5">
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/7df94c66-5d1e-4235-a476-1d2d8881a456_800w.jpg" alt="Design system" className="h-72 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/nexus_system.png" alt="Design system" className="h-72 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Design • System</p>
@@ -224,7 +224,7 @@ const ProjectsPage = () => {
                         </a>
 
                         <a href="/#work" className="group relative overflow-hidden ring-1 ring-neutral-200 dark:ring-neutral-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                            <img src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/68a7825c-0f07-4225-a8e0-d22929426aa3_800w.jpg" alt="Web application" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
+                            <img src="/images/projects/taskflow_pro.png" alt="Web application" className="h-56 w-full transition-transform duration-500 group-hover:scale-105 object-cover" />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 right-0 p-5">
                                 <p className="text-xs text-white/80 font-geist">Web • Application</p>
