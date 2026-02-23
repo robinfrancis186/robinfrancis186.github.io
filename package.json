@@ -12,8 +12,6 @@
   "dependencies": {
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
-    "@splinetool/react-spline": "^4.1.0",
-    "@splinetool/runtime": "^1.12.58",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-scroll": "^1.8.10",
     "@types/three": "^0.181.0",
