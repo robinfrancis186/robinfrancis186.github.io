@@ -7,6 +7,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import BlogPage from './pages/BlogPage'
 import Footer from './components/Footer'
 import Lenis from 'lenis'
+import AssistantWidget from '@/components/ui/AssistantWidget'
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/blog" element={<BlogPage />} />
                 </Routes>
 
+                <AssistantWidget />
                 <Footer />
             </div>
         </Router>
