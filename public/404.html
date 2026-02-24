@@ -57,6 +57,13 @@
     <h1>404</h1>
     <p>Oops! The page you're looking for doesn't exist.</p>
     <a href="/">Return Home</a>
+
+    <script>
+        // GitHub Pages SPA redirect fallback for the Sanity CMS
+        if (window.location.pathname.startsWith('/cms')) {
+            window.location.replace('/cms/');
+        }
+    </script>
 </body>
 
 </html>
