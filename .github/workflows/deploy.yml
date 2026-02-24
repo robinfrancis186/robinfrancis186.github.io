@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install CMS dependencies
+        run: npm ci --prefix portfolio-cms
+
       - name: Build
         run: npm run build
 
