@@ -1,133 +1,22 @@
-# Robin Francis - Portfolio
+# Robin Francis portfolio — React/Vite implementation
 
-A modern, responsive portfolio website showcasing my projects, achievements, and skills. Built with modern web technologies and best practices for performance and user experience.
+Earlier portfolio implementation using React, TypeScript, Vite, and Sanity. The current Next.js portfolio source is [Robinfrancis.in](https://github.com/robinfrancis186/Robinfrancis.in).
 
-## 🌟 Features
+[View this GitHub Pages deployment](https://robinfrancis186.github.io/) · [Current portfolio](https://robinfrancis.in/)
 
-### 💻 Technical Features
-- Responsive design that works on all devices
-- Dark/Light theme with smooth transitions
-- Custom cursor trail effect
-- Progressive Web App (PWA) support
-- Optimized performance with lazy loading
-- SEO optimized with meta tags and Schema.org markup
-- Custom animations and transitions
-- Mobile-first approach
-- Glass morphism UI elements
+## Local development
 
-### 🎯 Content Sections
-- Hero section with multilingual name display
-- Mission statement
-- About me with key highlights
-- Interactive resume timeline
-- Project showcase
-- Blog with modal view
-- Contact form with EmailJS integration
-
-### 🚀 Performance Optimizations
-- Lazy loading images
-- Minified CSS and JavaScript
-- Optimized asset loading
-- Browser caching
-- Service Worker for offline support
-- Content delivery optimization
-
-## 🛠️ Technologies Used
-
-- HTML5
-- CSS3 (Custom properties, Flexbox, Grid)
-- JavaScript (ES6+)
-- EmailJS for contact form
-- Anime.js for animations
-- Font Awesome icons
-- Google Fonts
-- Service Workers for PWA
-
-## 📦 Installation & Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/robinfrancis186/robinfrancis186.github.io.git
+```sh
+npm install
+npm run dev
 ```
 
-2. Navigate to the project directory:
-```bash
-cd robinfrancis186.github.io
-```
+`npm run build` builds the Sanity CMS and then the Vite application. CMS dependencies and configuration are required; the repository is not a standalone HTML-only site. Source lives in `src/`, with CMS code in `portfolio-cms/`.
 
-3. Open index.html in your browser or use a local server:
-```bash
-# Using Python
-python -m http.server 8000
+## Status
 
-# Using Node.js
-npx serve
-```
+This repository is retained as the earlier implementation. The documentation cleanup does not alter its hosted application or personal content. Build and deployment behaviour were not revalidated locally during this documentation-only change.
 
-## 🔧 Configuration
+## Licensing
 
-### EmailJS Setup
-1. Create an account at [EmailJS](https://www.emailjs.com/)
-2. Create a new email service
-3. Update the EmailJS configuration in `js/script.js`:
-```javascript
-emailjs.init("YOUR_USER_ID");
-```
-
-### Google Analytics Setup
-1. Replace the Google Analytics ID in `index.html`:
-```html
-gtag('config', 'YOUR_GA_ID');
-```
-
-## 📱 PWA Support
-
-The website is PWA-enabled with:
-- Service Worker for offline functionality
-- Manifest file for installation
-- Cache management
-- Push notifications support
-
-## 🎨 Customization
-
-### Theme Colors
-Edit the CSS variables in `css/style.css`:
-```css
-:root {
-    --gradient-start: #2563eb;
-    --gradient-end: #60a5fa;
-    /* ... other variables */
-}
-```
-
-### Content
-Update the content in `index.html` and blog posts in `js/blog.js`
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/robinfrancis186/robinfrancis186.github.io/issues).
-
-## 👤 Author
-
-**Robin Francis**
-- GitHub: [@robinfrancis186](https://github.com/robinfrancis186)
-- LinkedIn: [Robin Francis](https://www.linkedin.com/in/robin-francis-b43565175)
-- Email: robinfrancis186@gmail.com
-
-## 🙏 Acknowledgments
-
-- IEEE Community
-- Sahrdaya College of Engineering & Technology
-- All mentors and supporters
-
-## 📈 Future Updates
-
-- [ ] Add more interactive elements
-- [ ] Implement blog comments system
-- [ ] Add project filtering
-- [ ] Enhance accessibility features
-- [ ] Add more language support 
+No repository-wide LICENSE file is included. This documentation does not grant a new license; existing third-party terms and asset ownership remain unchanged.
